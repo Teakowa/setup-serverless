@@ -7,39 +7,21 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
 
-(async () => {
-  const OutputListener = require('./lib/output-listener');
-
-  const stdout = new OutputListener();
-  const stderr = new OutputListener();
-
-  const listeners = {
-    stdout: stdout.listener,
-    stderr: stderr.listener
-  };
-
-  const args = process.argv.slice(2);
-  const options = {
-    listeners,
-    ignoreReturnCode: true
-  };
-  const exitCode = await exec.exec('sls', args, options);
-
-  core.debug(`Serverless exited with code ${exitCode}.`);
-  core.debug(`stdout: ${stdout.contents}`);
-  core.debug(`stderr: ${stderr.contents}`);
-  core.debug(`exitcode: ${exitCode}`);
-
-  // Set outputs, result, exitcode, and stderr
-  core.setOutput('stdout', stdout.contents);
-  core.setOutput('stderr', stderr.contents);
-  core.setOutput('exitcode', exitCode.toString(10));
-
-  // A non-zero exitCode is considered an error
-  if (exitCode !== 0) {
-    core.setFailed(`Serverless exited with code ${exitCode}.`);
+export async function main(
+  provider: string,
+  secretId: string,
+  secretKey: string,
+  version: string
+) {
+  if (!provider || !secretId || secretKey) {
+    throw new Error('Missing required arguments');
   }
-})();
+
+  if (!version) {
+    version = '@latest';
+    core.info('');
+  }
+}
 
 async function useProvider(
   provider: string,
