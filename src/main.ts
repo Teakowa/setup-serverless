@@ -1,19 +1,121 @@
-import * as core from '@actions/core'
-import {wait} from './wait'
+// Node.js core
+import {promises} from 'fs';
+import * as path from 'path';
 
-async function run(): Promise<void> {
-  try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+// External
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
+import * as io from '@actions/io';
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+export async function main(
+  provider: string,
+  secretId: string,
+  secretKey: string,
+  version: string
+): Promise<void> {
+  if (!provider || !secretId || secretKey) {
+    throw new Error('Missing required arguments');
+  }
 
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    core.setFailed(error.message)
+  if (!version) {
+    version = '@latest';
+    core.info('');
   }
 }
 
-run()
+async function useProvider(
+  provider: string,
+  secretId: string,
+  secretKey: string
+): Promise<void> {
+  switch (provider) {
+    case 'aws': {
+      const command =
+        'export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}';
+      await exec.exec(command);
+      break;
+    }
+    case 'tencent': {
+      const accountId = core.getInput('tencent_appid');
+      if (!accountId) {
+        throw new Error('Missing required arguments');
+      }
+
+      const context = `[default]
+tencent_appid = ${accountId}
+tencent_secret_id = ${secretId}
+tencent_secret_key = ${secretKey}`.trim();
+
+      await addCredentials(provider, 'credentials', context);
+
+      const command =
+        'export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}';
+      await exec.exec(command);
+
+      break;
+    }
+    case 'aliyuncli': {
+      const accountId = core.getInput('aliyun_account_id');
+      if (!accountId) {
+        throw new Error('Missing required arguments');
+      }
+
+      const context = `[default]
+aliyun_access_key_secret = ${secretKey}
+aliyun_access_key_id = ${secretId}
+aliyun_account_id = ${accountId}`;
+
+      await addCredentials(provider, 'credentials', context);
+
+      const command =
+        'export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}';
+      await exec.exec(command);
+
+      break;
+    }
+    default: {
+      core.error('No support for this provider');
+    }
+  }
+}
+
+async function addCredentials(
+  provider: string,
+  fileName: string,
+  context: string
+): Promise<void> {
+  const credentialFile = `~/.${provider}/${fileName}`;
+  const folder = path.dirname(credentialFile);
+
+  core.debug(`Creating ${folder}`);
+  await io.mkdirP(folder);
+
+  core.debug(`Adding credentials to ${fileName}`);
+  await promises.writeFile(fileName, context);
+}
+
+export async function run(): Promise<void> {
+  const provider = core.getInput('provider');
+  const secretId = core.getInput('secretId');
+  const secretKey = core.getInput('secretKey');
+
+  if (!provider || !secretId || !secretKey) {
+    throw new Error('Missing required arguments');
+  }
+
+  try {
+    const version =
+      core.getInput('version').toLowerCase() === 'latest'
+        ? 'latest'
+        : core.getInput('version').toLowerCase();
+
+    if (version) {
+      await exec.exec('npm install serverless@${version}');
+    }
+
+    await useProvider(provider, secretId, secretKey);
+  } catch (error) {
+    core.error(error);
+    throw error;
+  }
+}
