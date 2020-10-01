@@ -22,9 +22,3 @@ jobs:
       - run: npm ci
       - run: npm run format-check
       - run: npm run build
-      - name: Commit changed files
-        if: ${{ always() }}
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update dist/index.js
-          branch: ${{ github.head_ref }}
