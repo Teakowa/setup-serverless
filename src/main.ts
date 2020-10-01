@@ -30,8 +30,6 @@ async function useProvider(
 ) {
   switch (provider) {
     case 'aws': {
-      const command = `export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}`;
-      await exec.exec(command);
       break;
     }
     case 'tencent': {
@@ -46,10 +44,6 @@ tencent_secret_id = ${secretId}
 tencent_secret_key = ${secretKey}`.trim();
 
       await addCredentials(provider, 'credentials', context);
-
-      const command = `export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}`;
-      await exec.exec(command);
-
       break;
     }
     case 'aliyuncli': {
@@ -64,10 +58,6 @@ aliyun_access_key_id = ${secretId}
 aliyun_account_id = ${accountId}`;
 
       await addCredentials(provider, 'credentials', context);
-
-      const command = `export ALIYUN_ACCESS_KEY=${secretId} && export ALIYUN_SECRET_KEY=${secretKey}`;
-      await exec.exec(command);
-
       break;
     }
     default: {
