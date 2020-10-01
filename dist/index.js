@@ -90,7 +90,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = exports.main = void 0;
+exports.run = void 0;
 // Node.js core
 const fs_1 = __webpack_require__(747);
 const path = __importStar(__webpack_require__(622));
@@ -98,18 +98,6 @@ const path = __importStar(__webpack_require__(622));
 const core = __importStar(__webpack_require__(186));
 const exec = __importStar(__webpack_require__(514));
 const io = __importStar(__webpack_require__(436));
-function main(provider, secretId, secretKey, version) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (!provider || !secretId || secretKey) {
-            throw new Error('Missing required arguments');
-        }
-        if (!version) {
-            version = '@latest';
-            core.info('');
-        }
-    });
-}
-exports.main = main;
 function useProvider(provider, secretId, secretKey) {
     return __awaiter(this, void 0, void 0, function* () {
         switch (provider) {
@@ -152,8 +140,8 @@ function addCredentials(provider, fileName, context) {
         const folder = path.dirname(credentialFile);
         core.info(`Creating ${folder}`);
         yield io.mkdirP(folder);
-        core.info(`Adding credentials to ${fileName}`);
-        yield fs_1.promises.writeFile(fileName, context);
+        core.info(`Adding credentials to ${credentialFile}`);
+        yield fs_1.promises.writeFile(credentialFile, context);
     });
 }
 function run() {
