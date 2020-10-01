@@ -21,7 +21,7 @@ inputs:
     required: false
     description: 'Account ID of the aliyun to ues.'
 runs:
-  using: 'node14'
+  using: 'node12'
   main: 'dist/index.js'
 branding:
   icon: 'zap'
