@@ -1,11 +1,25 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'setup-serverless'
+description: '⚡:octocat: A Github Action for deploying with the Serverless Framework'
 inputs:
-  milliseconds: # change this
+  severless-version:
+    required: false
+    default: latest
+  provider:
     required: true
     description: 'input description here'
-    default: 'default value if applicable'
+  secretId:
+    required: true
+    description: 'input description here'
+  secretKey:
+    required: true
+    description: 'input description here'
+  tencent_appid:
+    required: false
+  aliyun_account_id:
+    required: false
 runs:
-  using: 'node12'
+  using: 'node14'
   main: 'dist/index.js'
+branding:
+  icon: 'zap'
+  color: black
