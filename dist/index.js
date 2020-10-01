@@ -170,7 +170,7 @@ function run() {
                 : core.getInput('serverless_version').toLowerCase();
             if (version) {
                 core.info(`Installing serverless version ${version} ...`);
-                yield exec.exec(`npm install -g serverless@${version}`);
+                yield exec.exec(`sudo npm install -g serverless@${version}`);
                 core.info(`Installed serverless version ${version}`);
             }
             const provider = core.getInput('provider');

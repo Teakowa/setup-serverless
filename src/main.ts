@@ -100,7 +100,7 @@ export async function run() {
 
     if (version) {
       core.info(`Installing serverless version ${version} ...`);
-      await exec.exec(`npm install -g serverless@${version}`);
+      await exec.exec(`sudo npm install -g serverless@${version}`);
       core.info(`Installed serverless version ${version}`);
     }
 
