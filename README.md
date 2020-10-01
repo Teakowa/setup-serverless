@@ -1,103 +1,89 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+# setup-serverless
 
-# Create a JavaScript Action using TypeScript
+![Build Test](https://github.com/Teakowa/setup-serverless/workflows/Build20Test/badge.svg)
+![Setup Serverless](https://github.com/Teakowa/setup-serverless/workflows/Setup%20Serverless/badge.svg)
+[![LICENSE](https://img.shields.io/badge/License-Apache--2.0-green.svg?style=flat-square)](LICENSE)
+[![LICENSE](https://img.shields.io/badge/License-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![996.icu](https://img.shields.io/badge/Link-996.icu-red.svg?style=flat-square)](https://996.icu)
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+The `Teakowa/setup-serverless` action is a JavaScript action that sets up Serverless CLI  in your GitHub Actions workflow by:
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+- Install a specific version of Serverless CLI
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+After you've used the action, subsequent steps in the same job can run arbitrary Serverless commands using [the GitHub Actions run syntax](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsrun). This allows most Serverless commands to work exactly like they do on your local command line.
 
-## Create an action from this template
+## Support Providers
 
-Click the `Use this Template` and provide the new repo details for your action
+- AWS
+- Tencent
+- Aliyun
 
-## Code in Main
+# Usage
 
-Install the dependencies  
-```bash
-$ npm install
-```
+This action can be run on `ubuntu-latest` and `macos-latest` GitHub Actions runners.
 
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml contains defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+The default configuration installs the latest version of Serverless CLI
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+steps:
+- uses: Teakowa/setup-serverless@v0
 ```
 
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
+A specific version of Serverless CLI can be installed.
 
-## Usage:
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v0
+  with:
+    serverless_version: 2.4.0
+```
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+Credentials for AWS can be configured.
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v0
+  with:
+    provider: aws
+    secret_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    secret_key ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+```
+
+Credentials for Tencent Cloud can be configured.
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v0
+  with:
+    provider: tencent
+    tencent_appid: ${{ secrets.TENCENTCLOUD_APP_ID }}
+    secret_id: ${{ secrets.TENCENTCLOUD_SECRET_ID }}
+    secret_key ${{ secrets.TENCENTCLOUD_SECRET_KEY}}
+```
+
+Credentials for Aliyun can be configured.
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v0
+  with:
+    provider: aliyun
+    aliyun_account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+    secret_id: ${{ secrets.ALIYUN_ACCESS_KEY }}
+    secret_key ${{ secrets.ALIYUN_SECRET_KEY}}
+```
+
+## Inputs
+
+The action supports the following inputs:
+
+- `serverless_version`: (optional) The version of Serverless CLI to install. Instead of a full version string, you can also specify a constraint string (see [Advanced Range Syntax](https://www.npmjs.com/package/semver#advanced-range-syntax) for available range specifications). Examples are: ^2.4, ~2.4, 2.4.x (all three installing the latest available 2.4 version). The special value of latest installs the latest version of Serverless CLI. Defaults to latest.
+- `provider`: (**required**) The infrastructure provider of serverless framework. All characters must be lowercase.
+- `secret_id`: (**required**) The secret id of infrastructure provider.
+- `secret_key`: (**required**) The secret key of infrastructure provider.
+- `tencent_appid`: (optional) The appid of tencent provider. when provider is tencent, it's required.
+- `aliyun_account_id`: (optional) The account id of aliyun provider. when provider is aliyun, it's required.
+
+## License
+
+The code in this repository, unless otherwise noted, is under the terms of both the [Anti 996](./LICENSE-ANTI996) License and the [Apache License (Version 2.0)](./LICENSE-APACHE).
