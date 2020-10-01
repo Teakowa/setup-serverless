@@ -99,7 +99,7 @@ export async function run() {
     const secretKey = core.getInput('secret_key');
 
     if (!provider || !secretId || !secretKey) {
-      core.error('Missing required arguments');
+      core.setFailed('Missing required arguments');
     }
 
     await useProvider(provider, secretId, secretKey);
