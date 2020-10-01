@@ -105,8 +105,8 @@ export async function run() {
     }
 
     const provider = core.getInput('provider');
-    const secretId = core.getInput('secretId');
-    const secretKey = core.getInput('secretKey');
+    const secretId = core.getInput('secret_id');
+    const secretKey = core.getInput('secret_key');
 
     if (!provider || !secretId || !secretKey) {
       core.error('Missing required arguments');

@@ -8,10 +8,10 @@ inputs:
   provider:
     required: true
     description: 'Provider of the serverless.'
-  secretId:
+  secret_id:
     required: true
     description: 'Secret ID of the provider to ues.'
-  secretKey:
+  secret_key:
     required: true
     description: 'Secret Key of the provider to ues.'
   tencent_appid:
