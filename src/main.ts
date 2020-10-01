@@ -7,22 +7,6 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
 
-export async function main(
-  provider: string,
-  secretId: string,
-  secretKey: string,
-  version: string
-) {
-  if (!provider || !secretId || secretKey) {
-    throw new Error('Missing required arguments');
-  }
-
-  if (!version) {
-    version = '@latest';
-    core.info('');
-  }
-}
-
 async function useProvider(
   provider: string,
   secretId: string,
