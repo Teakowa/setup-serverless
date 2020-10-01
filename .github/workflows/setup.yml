@@ -1,0 +1,36 @@
+name: 'Setup Serverless'
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  serverless-versions:
+    name: 'Serverless Versions'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+        serverless-versions: [ 2.4.0, latest ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Serverless - ${{ matrix['serverless-versions'] }}
+        uses: ./
+        with:
+          serverless_version: ${{ matrix['serverless-versions'] }}
+
+      - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
+        if: ${{ matrix['serverless-versions'] != 'latest' }}
+        run: sls -v
+
+      - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
+        if: ${{ matrix['serverless-versions'] == 'latest' }}
+        run: sls -v
