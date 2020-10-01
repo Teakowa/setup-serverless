@@ -12,7 +12,7 @@ export async function main(
   secretId: string,
   secretKey: string,
   version: string
-): Promise<void> {
+) {
   if (!provider || !secretId || secretKey) {
     throw new Error('Missing required arguments');
   }
@@ -27,7 +27,7 @@ async function useProvider(
   provider: string,
   secretId: string,
   secretKey: string
-): Promise<void> {
+) {
   switch (provider) {
     case 'aws': {
       const command =
@@ -83,7 +83,7 @@ async function addCredentials(
   provider: string,
   fileName: string,
   context: string
-): Promise<void> {
+) {
   const credentialFile = `~/.${provider}/${fileName}`;
   const folder = path.dirname(credentialFile);
 
@@ -94,7 +94,7 @@ async function addCredentials(
   await promises.writeFile(fileName, context);
 }
 
-export async function run(): Promise<void> {
+export async function run() {
   const provider = core.getInput('provider');
   const secretId = core.getInput('secretId');
   const secretKey = core.getInput('secretKey');
