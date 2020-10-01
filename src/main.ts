@@ -29,6 +29,10 @@ tencent_secret_id = ${secretId}
 tencent_secret_key = ${secretKey}`.trim();
 
       await addCredentials(provider, 'credentials', context);
+
+      const dotEnvContext = `TENCENT_SECRET_ID=${secretId}
+TENCENT_SECRET_KEY=${secretKey}`.trim();
+      await addDotEnv(dotEnvContext);
       break;
     }
     case 'aliyuncli': {
@@ -62,6 +66,13 @@ async function addCredentials(
   core.info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
+  const writeFileAsync = promisify(writeFile);
+  core.info(`Adding credentials to ${credentialFile}`);
+  await writeFileAsync(credentialFile, context);
+}
+
+async function addDotEnv(context: string) {
+  const credentialFile = `${process.env['GITHUB_WORKSPACE']}/.env`;
   const writeFileAsync = promisify(writeFile);
   core.info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
