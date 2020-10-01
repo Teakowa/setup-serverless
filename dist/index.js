@@ -114,36 +114,30 @@ function useProvider(provider, secretId, secretKey) {
     return __awaiter(this, void 0, void 0, function* () {
         switch (provider) {
             case 'aws': {
-                const command = `export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}`;
-                yield exec.exec(command);
                 break;
             }
             case 'tencent': {
                 const accountId = core.getInput('tencent_appid');
                 if (!accountId) {
-                    throw new Error('Missing required arguments');
+                    throw new Error('Missing required arguments: ' + 'tencent_appid');
                 }
                 const context = `[default]
 tencent_appid = ${accountId}
 tencent_secret_id = ${secretId}
 tencent_secret_key = ${secretKey}`.trim();
                 yield addCredentials(provider, 'credentials', context);
-                const command = `export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}`;
-                yield exec.exec(command);
                 break;
             }
             case 'aliyuncli': {
                 const accountId = core.getInput('aliyun_account_id');
                 if (!accountId) {
-                    throw new Error('Missing required arguments');
+                    throw new Error('Missing required arguments: ' + 'aliyun_account_id');
                 }
                 const context = `[default]
 aliyun_access_key_secret = ${secretKey}
 aliyun_access_key_id = ${secretId}
 aliyun_account_id = ${accountId}`;
                 yield addCredentials(provider, 'credentials', context);
-                const command = `export ALIYUN_ACCESS_KEY=${secretId} && export ALIYUN_SECRET_KEY=${secretKey}`;
-                yield exec.exec(command);
                 break;
             }
             default: {
@@ -177,7 +171,7 @@ function run() {
             const secretId = core.getInput('secret_id');
             const secretKey = core.getInput('secret_key');
             if (!provider || !secretId || !secretKey) {
-                core.error('Missing required arguments');
+                core.setFailed('Missing required arguments');
             }
             yield useProvider(provider, secretId, secretKey);
             core.info(`Using provider ${provider}.`);
