@@ -94,6 +94,7 @@ exports.run = void 0;
 // Node.js core
 const fs_1 = __webpack_require__(747);
 const path = __importStar(__webpack_require__(622));
+const util_1 = __webpack_require__(669);
 // External
 const core = __importStar(__webpack_require__(186));
 const exec = __importStar(__webpack_require__(514));
@@ -140,8 +141,9 @@ function addCredentials(provider, fileName, context) {
         const folder = path.dirname(credentialFile);
         core.info(`Creating ${folder}`);
         yield io.mkdirP(folder);
+        const writeFileAsync = util_1.promisify(fs_1.writeFile);
         core.info(`Adding credentials to ${credentialFile}`);
-        yield fs_1.promises.writeFile(credentialFile, context);
+        yield writeFileAsync(credentialFile, context);
     });
 }
 function run() {

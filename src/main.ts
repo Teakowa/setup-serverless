@@ -1,6 +1,7 @@
 // Node.js core
-import {promises} from 'fs';
+import {writeFile} from 'fs';
 import * as path from 'path';
+import {promisify} from 'util';
 
 // External
 import * as core from '@actions/core';
@@ -61,8 +62,9 @@ async function addCredentials(
   core.info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
+  const writeFileAsync = promisify(writeFile);
   core.info(`Adding credentials to ${credentialFile}`);
-  await promises.writeFile(credentialFile, context);
+  await writeFileAsync(credentialFile, context);
 }
 
 export async function run() {
