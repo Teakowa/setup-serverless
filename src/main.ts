@@ -61,8 +61,8 @@ async function addCredentials(
   core.info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
-  core.info(`Adding credentials to ${fileName}`);
-  await promises.writeFile(fileName, context);
+  core.info(`Adding credentials to ${credentialFile}`);
+  await promises.writeFile(credentialFile, context);
 }
 
 export async function run() {
