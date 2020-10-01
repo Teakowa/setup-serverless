@@ -1,7 +1,7 @@
 name: 'Setup Serverless environment'
 description: '⚡:octocat: A Github Action for deploying with the Serverless Framework'
 inputs:
-  severless-version:
+  serverless_version:
     description: "Version Spec of the version to use.  Examples: 2.4.0, ~2.0.0, ^2.0.0"
     required: false
     default: latest

@@ -105,9 +105,9 @@ export async function run() {
 
   try {
     const version =
-      core.getInput('version').toLowerCase() === 'latest'
+      core.getInput('serverless_version').toLowerCase() === 'latest'
         ? 'latest'
-        : core.getInput('version').toLowerCase();
+        : core.getInput('serverless_version').toLowerCase();
 
     if (version) {
       await exec.exec('npm install -g serverless@${version}');
