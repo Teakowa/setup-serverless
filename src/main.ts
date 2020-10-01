@@ -92,14 +92,6 @@ async function addCredentials(
 }
 
 export async function run() {
-  const provider = core.getInput('provider');
-  const secretId = core.getInput('secretId');
-  const secretKey = core.getInput('secretKey');
-
-  if (!provider || !secretId || !secretKey) {
-    throw new Error('Missing required arguments');
-  }
-
   try {
     const version =
       core.getInput('serverless_version').toLowerCase() === 'latest'
@@ -110,6 +102,14 @@ export async function run() {
       core.info(`Installing serverless version ${version} ...`);
       await exec.exec(`npm install -g serverless@${version}`);
       core.info(`Installed serverless version ${version}`);
+    }
+
+    const provider = core.getInput('provider');
+    const secretId = core.getInput('secretId');
+    const secretKey = core.getInput('secretKey');
+
+    if (!provider || !secretId || !secretKey) {
+      core.error('Missing required arguments');
     }
 
     await useProvider(provider, secretId, secretKey);

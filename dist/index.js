@@ -164,12 +164,6 @@ function addCredentials(provider, fileName, context) {
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const provider = core.getInput('provider');
-        const secretId = core.getInput('secretId');
-        const secretKey = core.getInput('secretKey');
-        if (!provider || !secretId || !secretKey) {
-            throw new Error('Missing required arguments');
-        }
         try {
             const version = core.getInput('serverless_version').toLowerCase() === 'latest'
                 ? 'latest'
@@ -178,6 +172,12 @@ function run() {
                 core.info(`Installing serverless version ${version} ...`);
                 yield exec.exec(`npm install -g serverless@${version}`);
                 core.info(`Installed serverless version ${version}`);
+            }
+            const provider = core.getInput('provider');
+            const secretId = core.getInput('secretId');
+            const secretKey = core.getInput('secretKey');
+            if (!provider || !secretId || !secretKey) {
+                core.error('Missing required arguments');
             }
             yield useProvider(provider, secretId, secretKey);
             core.info(`Using provider ${provider}.`);
