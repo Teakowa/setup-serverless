@@ -137,7 +137,7 @@ aliyun_account_id = ${accountId}`;
 }
 function addCredentials(provider, fileName, context) {
     return __awaiter(this, void 0, void 0, function* () {
-        const credentialFile = `~/.${provider}/${fileName}`;
+        const credentialFile = `${process.env['HOME']}/.${provider}/${fileName}`;
         const folder = path.dirname(credentialFile);
         core.info(`Creating ${folder}`);
         yield io.mkdirP(folder);

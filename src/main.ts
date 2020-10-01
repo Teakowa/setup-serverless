@@ -56,7 +56,7 @@ async function addCredentials(
   fileName: string,
   context: string
 ) {
-  const credentialFile = `~/.${provider}/${fileName}`;
+  const credentialFile = `${process.env['HOME']}/.${provider}/${fileName}`;
   const folder = path.dirname(credentialFile);
 
   core.info(`Creating ${folder}`);
