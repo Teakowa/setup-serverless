@@ -65,7 +65,7 @@ aliyun_account_id = ${accountId}`;
 
       await addCredentials(provider, 'credentials', context);
 
-      const command = `export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}`;
+      const command = `export ALIYUN_ACCESS_KEY=${secretId} && export ALIYUN_SECRET_KEY=${secretKey}`;
       await exec.exec(command);
 
       break;

@@ -142,7 +142,7 @@ aliyun_access_key_secret = ${secretKey}
 aliyun_access_key_id = ${secretId}
 aliyun_account_id = ${accountId}`;
                 yield addCredentials(provider, 'credentials', context);
-                const command = `export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}`;
+                const command = `export ALIYUN_ACCESS_KEY=${secretId} && export ALIYUN_SECRET_KEY=${secretKey}`;
                 yield exec.exec(command);
                 break;
             }
