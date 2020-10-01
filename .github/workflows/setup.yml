@@ -3,7 +3,7 @@ name: 'Setup Serverless'
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 defaults:
