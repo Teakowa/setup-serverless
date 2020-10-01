@@ -110,7 +110,7 @@ export async function run(): Promise<void> {
         : core.getInput('version').toLowerCase();
 
     if (version) {
-      await exec.exec('npm install serverless@${version}');
+      await exec.exec('npm install -g serverless@${version}');
     }
 
     await useProvider(provider, secretId, secretKey);
