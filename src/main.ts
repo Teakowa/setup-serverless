@@ -31,7 +31,8 @@ tencent_secret_key = ${secretKey}`.trim();
       await addCredentials(provider, 'credentials', context);
 
       const dotEnvContext = `TENCENT_SECRET_ID=${secretId}
-TENCENT_SECRET_KEY=${secretKey}`.trim();
+TENCENT_SECRET_KEY=${secretKey}
+SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
       await addDotEnv(dotEnvContext);
       break;
     }
