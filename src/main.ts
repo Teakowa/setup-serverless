@@ -30,8 +30,7 @@ async function useProvider(
 ) {
   switch (provider) {
     case 'aws': {
-      const command =
-        `export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}`;
+      const command = `export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}`;
       await exec.exec(command);
       break;
     }
@@ -48,8 +47,7 @@ tencent_secret_key = ${secretKey}`.trim();
 
       await addCredentials(provider, 'credentials', context);
 
-      const command =
-        `export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}`;
+      const command = `export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}`;
       await exec.exec(command);
 
       break;
@@ -67,8 +65,7 @@ aliyun_account_id = ${accountId}`;
 
       await addCredentials(provider, 'credentials', context);
 
-      const command =
-        `export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}`;
+      const command = `export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}`;
       await exec.exec(command);
 
       break;
@@ -87,10 +84,10 @@ async function addCredentials(
   const credentialFile = `~/.${provider}/${fileName}`;
   const folder = path.dirname(credentialFile);
 
-  core.debug(`Creating ${folder}`);
+  core.info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
-  core.debug(`Adding credentials to ${fileName}`);
+  core.info(`Adding credentials to ${fileName}`);
   await promises.writeFile(fileName, context);
 }
 
@@ -110,10 +107,13 @@ export async function run() {
         : core.getInput('serverless_version').toLowerCase();
 
     if (version) {
+      core.info(`Installing serverless version ${version} ...`);
       await exec.exec(`npm install -g serverless@${version}`);
+      core.info(`Installed serverless version ${version}`);
     }
 
     await useProvider(provider, secretId, secretKey);
+    core.info(`Using provider ${provider}.`);
   } catch (error) {
     core.error(error);
     throw error;

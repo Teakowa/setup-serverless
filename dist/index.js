@@ -1,4 +1,4 @@
-require('./sourcemap-register.js');module.exports =
+module.exports =
 /******/ (function(modules, runtime) { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The module cache
@@ -40,7 +40,7 @@ require('./sourcemap-register.js');module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(109);
+/******/ 		return __webpack_require__(142);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -90,7 +90,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = exports.main = void 0;
+exports.run = void 0;
 // Node.js core
 const fs_1 = __webpack_require__(747);
 const path = __importStar(__webpack_require__(622));
@@ -98,23 +98,38 @@ const path = __importStar(__webpack_require__(622));
 const core = __importStar(__webpack_require__(186));
 const exec = __importStar(__webpack_require__(514));
 const io = __importStar(__webpack_require__(436));
-function main(provider, secretId, secretKey, version) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (!provider || !secretId || secretKey) {
-            throw new Error('Missing required arguments');
-        }
-        if (!version) {
-            version = '@latest';
-            core.info('');
-        }
-    });
-}
-exports.main = main;
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    const OutputListener = __webpack_require__(307);
+    const stdout = new OutputListener();
+    const stderr = new OutputListener();
+    const listeners = {
+        stdout: stdout.listener,
+        stderr: stderr.listener
+    };
+    const args = process.argv.slice(2);
+    const options = {
+        listeners,
+        ignoreReturnCode: true
+    };
+    const exitCode = yield exec.exec('sls', args, options);
+    core.debug(`Serverless exited with code ${exitCode}.`);
+    core.debug(`stdout: ${stdout.contents}`);
+    core.debug(`stderr: ${stderr.contents}`);
+    core.debug(`exitcode: ${exitCode}`);
+    // Set outputs, result, exitcode, and stderr
+    core.setOutput('stdout', stdout.contents);
+    core.setOutput('stderr', stderr.contents);
+    core.setOutput('exitcode', exitCode.toString(10));
+    // A non-zero exitCode is considered an error
+    if (exitCode !== 0) {
+        core.setFailed(`Serverless exited with code ${exitCode}.`);
+    }
+}))();
 function useProvider(provider, secretId, secretKey) {
     return __awaiter(this, void 0, void 0, function* () {
         switch (provider) {
             case 'aws': {
-                const command = 'export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}';
+                const command = `export AWS_ACCESS_KEY_ID=${secretId} && export AWS_SECRET_ACCESS_KEY=${secretKey}`;
                 yield exec.exec(command);
                 break;
             }
@@ -128,7 +143,7 @@ tencent_appid = ${accountId}
 tencent_secret_id = ${secretId}
 tencent_secret_key = ${secretKey}`.trim();
                 yield addCredentials(provider, 'credentials', context);
-                const command = 'export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}';
+                const command = `export TENCENTCLOUD_SECRET_ID=${secretId} && export TENCENTCLOUD_SECRET_KEY=${secretKey}`;
                 yield exec.exec(command);
                 break;
             }
@@ -142,7 +157,7 @@ aliyun_access_key_secret = ${secretKey}
 aliyun_access_key_id = ${secretId}
 aliyun_account_id = ${accountId}`;
                 yield addCredentials(provider, 'credentials', context);
-                const command = 'export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}';
+                const command = `export ALICLOUD_ACCESS_KEY=${secretId} && export ALICLOUD_SECRET_KEY=${secretKey}`;
                 yield exec.exec(command);
                 break;
             }
@@ -156,9 +171,9 @@ function addCredentials(provider, fileName, context) {
     return __awaiter(this, void 0, void 0, function* () {
         const credentialFile = `~/.${provider}/${fileName}`;
         const folder = path.dirname(credentialFile);
-        core.debug(`Creating ${folder}`);
+        core.info(`Creating ${folder}`);
         yield io.mkdirP(folder);
-        core.debug(`Adding credentials to ${fileName}`);
+        core.info(`Adding credentials to ${fileName}`);
         yield fs_1.promises.writeFile(fileName, context);
     });
 }
@@ -171,13 +186,16 @@ function run() {
             throw new Error('Missing required arguments');
         }
         try {
-            const version = core.getInput('version').toLowerCase() === 'latest'
+            const version = core.getInput('serverless_version').toLowerCase() === 'latest'
                 ? 'latest'
-                : core.getInput('version').toLowerCase();
+                : core.getInput('serverless_version').toLowerCase();
             if (version) {
-                yield exec.exec('npm install serverless@${version}');
+                core.info(`Installing serverless version ${version} ...`);
+                yield exec.exec(`npm install -g serverless@${version}`);
+                core.info(`Installed serverless version ${version}`);
             }
             yield useProvider(provider, secretId, secretKey);
+            core.info(`Using provider ${provider}.`);
         }
         catch (error) {
             core.error(error);
@@ -194,6 +212,18 @@ exports.run = run;
 /***/ (function(module) {
 
 module.exports = require("child_process");
+
+/***/ }),
+
+/***/ 142:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const main_1 = __webpack_require__(109);
+main_1.run();
+//# sourceMappingURL=setup-serverless.js.map
 
 /***/ }),
 
@@ -1075,6 +1105,14 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
+/***/ 307:
+/***/ (function(module) {
+
+module.exports = eval("require")("./lib/output-listener");
+
+
+/***/ }),
+
 /***/ 351:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -1783,4 +1821,3 @@ function isUnixExecutable(stats) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
