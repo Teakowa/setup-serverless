@@ -35,7 +35,7 @@ async function useProvider(
     case 'tencent': {
       const accountId = core.getInput('tencent_appid');
       if (!accountId) {
-        throw new Error('Missing required arguments');
+        throw new Error('Missing required arguments: ' + 'tencent_appid');
       }
 
       const context = `[default]
@@ -49,7 +49,7 @@ tencent_secret_key = ${secretKey}`.trim();
     case 'aliyuncli': {
       const accountId = core.getInput('aliyun_account_id');
       if (!accountId) {
-        throw new Error('Missing required arguments');
+        throw new Error('Missing required arguments: ' + 'aliyun_account_id');
       }
 
       const context = `[default]
