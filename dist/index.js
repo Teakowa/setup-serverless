@@ -99,38 +99,88 @@ const util_1 = __webpack_require__(669);
 const core = __importStar(__webpack_require__(186));
 const exec = __importStar(__webpack_require__(514));
 const io = __importStar(__webpack_require__(436));
-function useProvider(provider, secretId, secretKey) {
+function useProvider(provider) {
     return __awaiter(this, void 0, void 0, function* () {
         switch (provider) {
             case 'aws': {
+                if (!process.env['AWS_ACCESS_KEY_ID'] ||
+                    !process.env['AWS_SECRET_ACCESS_KEY']) {
+                    core.setFailed('Missing aws required environment variables: AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY');
+                }
+                break;
+            }
+            case 'azure': {
+                if (!process.env['AZURE_SUBSCRIPTION_ID'] ||
+                    !process.env['AZURE_TENANT_ID'] ||
+                    !process.env['AZURE_CLIENT_ID'] ||
+                    !process.env['AZURE_CLIENT_SECRET']) {
+                    core.setFailed('Missing azure required environment variables.');
+                }
                 break;
             }
             case 'tencent': {
-                const accountId = core.getInput('tencent_appid');
-                if (!accountId) {
-                    throw new Error('Missing required arguments: ' + 'tencent_appid');
+                const appid = process.env['TENCENT_APPID'];
+                const secretId = process.env['TENCENT_SECRET_ID'];
+                const secretKey = process.env['TENCENT_SECRET_KEY'];
+                if (!appid || !secretId || !secretKey) {
+                    core.setFailed('Missing tencent required environment variables.');
                 }
                 const context = `[default]
-tencent_appid = ${accountId}
+tencent_appid = ${appid}
 tencent_secret_id = ${secretId}
 tencent_secret_key = ${secretKey}`.trim();
                 yield addCredentials(provider, 'credentials', context);
-                const dotEnvContext = `TENCENT_SECRET_ID=${secretId}
+                if (process.env['SERVERLESS_PLATFORM_VENDOR'] === 'tencent') {
+                    const dotEnvContext = `TENCENT_SECRET_ID=${secretId}
 TENCENT_SECRET_KEY=${secretKey}
 SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
-                yield addDotEnv(dotEnvContext);
+                    yield addDotEnv(dotEnvContext);
+                }
                 break;
             }
-            case 'aliyuncli': {
-                const accountId = core.getInput('aliyun_account_id');
-                if (!accountId) {
-                    throw new Error('Missing required arguments: ' + 'aliyun_account_id');
+            case 'gcloud': {
+                const keyfile = process.env['GCLOUD_KEYFILE'] !== undefined
+                    ? process.env['GCLOUD_KEYFILE']
+                    : '{}';
+                if (!keyfile) {
+                    core.setFailed('Missing google cloud keyfile environment variables.');
+                }
+                yield addCredentials(provider, 'keyfile.json', keyfile);
+                break;
+            }
+            case 'cloudflare-workers': {
+                if (!process.env['CLOUDFLARE_AUTH_KEY'] ||
+                    !process.env['CLOUDFLARE_AUTH_EMAIL']) {
+                    core.setFailed('Missing cloudflare required environment variables.');
+                }
+                break;
+            }
+            case 'fn': {
+                break;
+            }
+            case 'kubeless': {
+                break;
+            }
+            case 'openwhisk': {
+                if (!process.env['OW_AUTH'] ||
+                    !process.env['OW_APIHOST'] ||
+                    !process.env['OW_APIGW_ACCESS_TOKEN']) {
+                    core.setFailed('Missing openwhisk required environment variables.');
+                }
+                break;
+            }
+            case 'aliyun': {
+                const accountId = process.env['ALICLOUD_ACCOUNT_ID'];
+                const accessKey = process.env['ALICLOUD_ACCESS_KEY'];
+                const secretKey = process.env['ALICLOUD_SECRET_KEY'];
+                if (!accountId || !accessKey || !secretKey) {
+                    core.setFailed('Missing aliyun required environment variables');
                 }
                 const context = `[default]
 aliyun_access_key_secret = ${secretKey}
-aliyun_access_key_id = ${secretId}
+aliyun_access_key_id = ${accessKey}
 aliyun_account_id = ${accountId}`;
-                yield addCredentials(provider, 'credentials', context);
+                yield addCredentials(provider + 'cli', 'credentials', context);
                 break;
             }
             default: {
@@ -170,12 +220,10 @@ function run() {
                 core.info(`Installed serverless version ${version}`);
             }
             const provider = core.getInput('provider');
-            const secretId = core.getInput('secret_id');
-            const secretKey = core.getInput('secret_key');
-            if (!provider || !secretId || !secretKey) {
+            if (!provider) {
                 core.setFailed('Missing required arguments');
             }
-            yield useProvider(provider, secretId, secretKey);
+            yield useProvider(provider);
             core.info(`Using provider ${provider}.`);
         }
         catch (error) {

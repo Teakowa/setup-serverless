@@ -21,6 +21,19 @@ async function useProvider(provider: string) {
       }
       break;
     }
+
+    case 'azure': {
+      if (
+        !process.env['AZURE_SUBSCRIPTION_ID'] ||
+        !process.env['AZURE_TENANT_ID'] ||
+        !process.env['AZURE_CLIENT_ID'] ||
+        !process.env['AZURE_CLIENT_SECRET']
+      ) {
+        core.setFailed('Missing azure required environment variables.');
+      }
+      break;
+    }
+
     case 'tencent': {
       const appid = process.env['TENCENT_APPID'];
       const secretId = process.env['TENCENT_SECRET_ID'];
@@ -42,8 +55,54 @@ tencent_secret_key = ${secretKey}`.trim();
 TENCENT_SECRET_KEY=${secretKey}
 SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
         await addDotEnv(dotEnvContext);
+      }
       break;
     }
+
+    case 'gcloud': {
+      const keyfile =
+        process.env['GCLOUD_KEYFILE'] !== undefined
+          ? process.env['GCLOUD_KEYFILE']
+          : '{}';
+
+      if (!keyfile) {
+        core.setFailed('Missing google cloud keyfile environment variables.');
+      }
+
+      await addCredentials(provider, 'keyfile.json', keyfile);
+
+      break;
+    }
+
+    case 'cloudflare-workers': {
+      if (
+        !process.env['CLOUDFLARE_AUTH_KEY'] ||
+        !process.env['CLOUDFLARE_AUTH_EMAIL']
+      ) {
+        core.setFailed('Missing cloudflare required environment variables.');
+      }
+      break;
+    }
+
+    case 'fn': {
+      break;
+    }
+
+    case 'kubeless': {
+      break;
+    }
+
+    case 'openwhisk': {
+      if (
+        !process.env['OW_AUTH'] ||
+        !process.env['OW_APIHOST'] ||
+        !process.env['OW_APIGW_ACCESS_TOKEN']
+      ) {
+        core.setFailed('Missing openwhisk required environment variables.');
+      }
+      break;
+    }
+
     case 'aliyun': {
       const accountId = process.env['ALICLOUD_ACCOUNT_ID'];
       const accessKey = process.env['ALICLOUD_ACCESS_KEY'];
