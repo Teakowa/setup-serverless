@@ -31,8 +31,6 @@ jobs:
         with:
           serverless_version: ${{ matrix['serverless-versions'] }}
           provider: 'test'
-          secret_id: 'test'
-          secret_key: 'test'
 
       - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
         if: ${{ matrix['serverless-versions'] != 'latest' }}
