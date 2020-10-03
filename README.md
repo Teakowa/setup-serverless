@@ -45,8 +45,9 @@ steps:
 - uses: Teakowa/setup-serverless@v0
   with:
     provider: aws
-    secret_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    secret_key ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+  env:
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 ```
 
 Credentials for Tencent Cloud can be configured.
@@ -56,9 +57,10 @@ steps:
 - uses: Teakowa/setup-serverless@v0
   with:
     provider: tencent
-    tencent_appid: ${{ secrets.TENCENTCLOUD_APP_ID }}
-    secret_id: ${{ secrets.TENCENTCLOUD_SECRET_ID }}
-    secret_key ${{ secrets.TENCENTCLOUD_SECRET_KEY}}
+  env:
+    TENCENT_SECRET_ID: ${{ secrets.TENCENTCLOUD_APP_ID }}
+    TENCENTCLOUD_SECRET_ID: ${{ secrets.TENCENTCLOUD_SECRET_ID }}
+    TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENTCLOUD_SECRET_KEY}}
 ```
 
 Credentials for Aliyun can be configured.
@@ -68,9 +70,10 @@ steps:
 - uses: Teakowa/setup-serverless@v0
   with:
     provider: aliyun
-    aliyun_account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
-    secret_id: ${{ secrets.ALIYUN_ACCESS_KEY }}
-    secret_key ${{ secrets.ALIYUN_SECRET_KEY}}
+  env:
+    ALICLOUD_ACCOUNT_ID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+    ALICLOUD_ACCESS_KEY: ${{ secrets.ALIYUN_ACCESS_KEY }}
+    ALICLOUD_SECRET_KEY: ${{ secrets.ALIYUN_SECRET_KEY}}
 ```
 
 ## Inputs
@@ -79,10 +82,6 @@ The action supports the following inputs:
 
 - `serverless_version`: (optional) The version of Serverless CLI to install. Instead of a full version string, you can also specify a constraint string (see [Advanced Range Syntax](https://www.npmjs.com/package/semver#advanced-range-syntax) for available range specifications). Examples are: ^2.4, ~2.4, 2.4.x (all three installing the latest available 2.4 version). The special value of latest installs the latest version of Serverless CLI. Defaults to latest.
 - `provider`: (**required**) The infrastructure provider of serverless framework. All characters must be lowercase.
-- `secret_id`: (**required**) The secret id of infrastructure provider.
-- `secret_key`: (**required**) The secret key of infrastructure provider.
-- `tencent_appid`: (optional) The appid of tencent provider. when provider is tencent, it's required.
-- `aliyun_account_id`: (optional) The account id of aliyun provider. when provider is aliyun, it's required.
 
 ## License
 
