@@ -8,18 +8,6 @@ inputs:
   provider:
     required: true
     description: 'Provider of the serverless.'
-  secret_id:
-    required: true
-    description: 'Secret ID of the provider to ues.'
-  secret_key:
-    required: true
-    description: 'Secret Key of the provider to ues.'
-  tencent_appid:
-    required: false
-    description: 'Appid of the tencent cloud to ues.'
-  aliyun_account_id:
-    required: false
-    description: 'Account ID of the aliyun to ues.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
