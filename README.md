@@ -50,6 +50,20 @@ steps:
     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 ```
 
+Credentials for Azure can be configured.
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v0
+  with:
+    provider: azure
+  env:
+    AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID}}
+    AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID}}
+    AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET}}
+```
+
 Credentials for Tencent Cloud can be configured.
 
 ```yaml
