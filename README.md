@@ -14,9 +14,16 @@ After you've used the action, subsequent steps in the same job can run arbitrary
 
 ## Support Providers
 
-- AWS
-- Tencent
-- Aliyun
+- aws
+- azure
+- tencent
+- knative
+- alibaba cloud
+- cloudflare workers
+- fn
+- kubeless
+- openwhisk
+- spotinst
 
 # Usage
 
