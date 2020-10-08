@@ -79,9 +79,9 @@ steps:
   with:
     provider: tencent
   env:
-    TENCENT_SECRET_ID: ${{ secrets.TENCENTCLOUD_APP_ID }}
-    TENCENTCLOUD_SECRET_ID: ${{ secrets.TENCENTCLOUD_SECRET_ID }}
-    TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENTCLOUD_SECRET_KEY}}
+    TENCENT_APPID: ${{ secrets.TENCENT_APP_ID }}
+    TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+    TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
 ```
 
 Credentials for Aliyun can be configured.
@@ -92,9 +92,9 @@ steps:
   with:
     provider: aliyun
   env:
-    ALICLOUD_ACCOUNT_ID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
-    ALICLOUD_ACCESS_KEY: ${{ secrets.ALIYUN_ACCESS_KEY }}
-    ALICLOUD_SECRET_KEY: ${{ secrets.ALIYUN_SECRET_KEY}}
+    ALICLOUD_ACCOUNT_ID: ${{ secrets.ALICLOUD_ACCOUNT_ID }}
+    ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+    ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY}}
 ```
 
 ## Inputs
