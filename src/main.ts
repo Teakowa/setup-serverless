@@ -15,7 +15,7 @@ async function useProvider(provider: string) {
         !process.env['AWS_ACCESS_KEY_ID'] ||
         !process.env['AWS_SECRET_ACCESS_KEY']
       ) {
-        core.setFailed(
+        fail(
           'Missing aws required environment variables: AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY'
         );
       }
@@ -29,7 +29,7 @@ async function useProvider(provider: string) {
         !process.env['AZURE_CLIENT_ID'] ||
         !process.env['AZURE_CLIENT_SECRET']
       ) {
-        core.setFailed('Missing azure required environment variables.');
+        fail('Missing azure required environment variables.');
       }
       break;
     }
@@ -40,7 +40,7 @@ async function useProvider(provider: string) {
       const secretKey = process.env['TENCENT_SECRET_KEY'];
 
       if (!appid || !secretId || !secretKey) {
-        core.setFailed('Missing tencent required environment variables.');
+        fail('Missing tencent required environment variables.');
       }
 
       const context = `[default]
@@ -66,7 +66,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
           : '{}';
 
       if (!keyfile) {
-        core.setFailed('Missing google cloud keyfile environment variables.');
+        fail('Missing google cloud keyfile environment variables.');
       }
 
       await addCredentials(provider, 'keyfile.json', keyfile);
@@ -79,7 +79,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
         !process.env['CLOUDFLARE_AUTH_KEY'] ||
         !process.env['CLOUDFLARE_AUTH_EMAIL']
       ) {
-        core.setFailed('Missing cloudflare required environment variables.');
+        fail('Missing cloudflare required environment variables.');
       }
       break;
     }
@@ -98,7 +98,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
         !process.env['OW_APIHOST'] ||
         !process.env['OW_APIGW_ACCESS_TOKEN']
       ) {
-        core.setFailed('Missing openwhisk required environment variables.');
+        fail('Missing openwhisk required environment variables.');
       }
       break;
     }
@@ -109,7 +109,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
       const secretKey = process.env['ALICLOUD_SECRET_KEY'];
 
       if (!accountId || !accessKey || !secretKey) {
-        core.setFailed('Missing aliyun required environment variables');
+        fail('Missing aliyun required environment variables');
       }
 
       const context = `[default]
@@ -121,7 +121,7 @@ aliyun_account_id = ${accountId}`;
       break;
     }
     default: {
-      core.error('No support for this provider');
+      fail('No support for this provider');
     }
   }
 }
@@ -134,18 +134,18 @@ async function addCredentials(
   const credentialFile = `${process.env['HOME']}/.${provider}/${fileName}`;
   const folder = path.dirname(credentialFile);
 
-  core.info(`Creating ${folder}`);
+  info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
   const writeFileAsync = promisify(writeFile);
-  core.info(`Adding credentials to ${credentialFile}`);
+  info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
 }
 
 async function addDotEnv(context: string) {
   const credentialFile = `${process.env['GITHUB_WORKSPACE']}/.env`;
   const writeFileAsync = promisify(writeFile);
-  core.info(`Adding credentials to ${credentialFile}`);
+  info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
 }
 
@@ -157,21 +157,29 @@ export async function run() {
         : core.getInput('serverless_version').toLowerCase();
 
     if (version) {
-      core.info(`Installing serverless version ${version} ...`);
+      info(`Installing serverless version ${version} ...`);
       await exec.exec(`sudo npm install -g serverless@${version}`);
-      core.info(`Installed serverless version ${version}`);
+      info(`Installed serverless version ${version}`);
     }
 
     const provider = core.getInput('provider');
 
     if (!provider) {
-      core.setFailed('Missing required arguments');
+      fail('Missing required arguments');
     }
 
     await useProvider(provider);
-    core.info(`Using provider ${provider}.`);
+    info(`Using provider ${provider}.`);
   } catch (error) {
-    core.error(error);
-    throw error;
+    fail(error);
   }
+}
+
+function fail(message: string) {
+  core.setFailed(message);
+  process.exit(11);
+}
+
+function info(message: string) {
+  core.info(message);
 }
