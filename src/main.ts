@@ -10,16 +10,11 @@ import * as io from '@actions/io';
 
 export async function run() {
   try {
-    const version =
-      core.getInput('serverless_version').toLowerCase() === 'latest'
-        ? 'latest'
-        : core.getInput('serverless_version').toLowerCase();
+    const version = core.getInput('serverless_version').toLowerCase();
 
-    if (version) {
-      info(`Installing serverless version ${version} ...`);
-      await exec.exec(`sudo npm install -g serverless@${version}`);
-      info(`Installed serverless version ${version}`);
-    }
+    info(`Installing serverless version ${version} ...`);
+    await install(version);
+    info(`Installed serverless version ${version}`);
 
     const provider = core.getInput('provider');
 
@@ -30,8 +25,33 @@ export async function run() {
     await useProvider(provider);
     info(`Using provider ${provider}.`);
   } catch (error) {
-    fail(error);
+    fail(error.message);
   }
+}
+
+async function install(version: string) {
+  let output: string = '';
+  let errOutput: string = '';
+
+  const execOptions = {
+    listeners: {
+      stdout: (data: Buffer) => {
+        output += data.toString();
+      },
+      stderr: (data: Buffer) => {
+        errOutput += data.toString();
+      }
+    }
+  };
+
+  const serverless = `serverless@${version}`;
+  await core.exportVariable('npm_config_loglevel', 'silent');
+  await exec.exec('sudo npm', ['install', '-g', serverless], execOptions);
+
+  return {
+    stdout: output,
+    stderr: errOutput
+  };
 }
 
 async function useProvider(provider: string) {
