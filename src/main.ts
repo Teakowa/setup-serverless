@@ -8,6 +8,32 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
 
+export async function run() {
+  try {
+    const version =
+      core.getInput('serverless_version').toLowerCase() === 'latest'
+        ? 'latest'
+        : core.getInput('serverless_version').toLowerCase();
+
+    if (version) {
+      info(`Installing serverless version ${version} ...`);
+      await exec.exec(`sudo npm install -g serverless@${version}`);
+      info(`Installed serverless version ${version}`);
+    }
+
+    const provider = core.getInput('provider');
+
+    if (!provider) {
+      fail('Missing required arguments');
+    }
+
+    await useProvider(provider);
+    info(`Using provider ${provider}.`);
+  } catch (error) {
+    fail(error);
+  }
+}
+
 async function useProvider(provider: string) {
   switch (provider) {
     case 'aws': {
@@ -147,32 +173,6 @@ async function addDotEnv(context: string) {
   const writeFileAsync = promisify(writeFile);
   info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
-}
-
-export async function run() {
-  try {
-    const version =
-      core.getInput('serverless_version').toLowerCase() === 'latest'
-        ? 'latest'
-        : core.getInput('serverless_version').toLowerCase();
-
-    if (version) {
-      info(`Installing serverless version ${version} ...`);
-      await exec.exec(`sudo npm install -g serverless@${version}`);
-      info(`Installed serverless version ${version}`);
-    }
-
-    const provider = core.getInput('provider');
-
-    if (!provider) {
-      fail('Missing required arguments');
-    }
-
-    await useProvider(provider);
-    info(`Using provider ${provider}.`);
-  } catch (error) {
-    fail(error);
-  }
 }
 
 function fail(message: string) {
