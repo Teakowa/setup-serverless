@@ -139,11 +139,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
     }
 
     case 'openwhisk': {
-      if (
-        !process.env['OW_AUTH'] ||
-        !process.env['OW_APIHOST'] ||
-        !process.env['OW_APIGW_ACCESS_TOKEN']
-      ) {
+      if (!process.env['OW_AUTH'] || !process.env['OW_APIHOST']) {
         fail('Missing openwhisk required environment variables.');
       }
       break;
