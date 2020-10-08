@@ -46,6 +46,7 @@ async function install(version: string) {
 
   const serverless = `serverless@${version}`;
   await core.exportVariable('npm_config_loglevel', 'silent');
+  await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
   await exec.exec('sudo npm', ['install', '-g', serverless], execOptions);
 
   return {
