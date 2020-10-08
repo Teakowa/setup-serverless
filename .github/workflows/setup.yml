@@ -14,6 +14,25 @@ defaults:
   run:
     shell: bash
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  TENCENT_APPID: ${{ secrets.TENCENT_APPID }}
+  TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+  TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
+  GCLOUD_KEYFILE: ${{ secrets.GCLOUD_KEYFILE }}
+  CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
+  CLOUDFLARE_AUTH_EMAIL: ${{ secrets.CLOUDFLARE_AUTH_EMAIL }}
+  OW_AUTH: ${{ secrets.OW_AUTH }}
+  OW_APIHOST: ${{ secrets.OW_APIHOST }}
+  ALICLOUD_ACCOUNT_ID: ${{ secrets.ALICLOUD_ACCOUNT_ID }}
+  ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+  ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY}}
+
 jobs:
   serverless-versions:
     name: 'Serverless Versions'
@@ -22,6 +41,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
         serverless-versions: [ 1.83.0, 2.4.0, latest ]
+        providers: [ 'aws','azure','tencent','gcloud','cloudflare-workers','fn','kubeless','openwhisk','spotinst','aliyun' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,7 +50,7 @@ jobs:
         uses: ./
         with:
           serverless_version: ${{ matrix['serverless-versions'] }}
-          provider: 'test'
+          provider: ${{ matrix['providers'] }}
 
       - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
         if: ${{ matrix['serverless-versions'] != 'latest' }}
