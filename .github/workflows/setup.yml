@@ -42,7 +42,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
         serverless-versions: [ 1.83.0, 2.4.0, latest ]
-        providers: [ 'aws','azure','tencent','gcloud','cloudflare-workers','fn','kubeless','openwhisk','spotinst','aliyun' ]
+        providers: [ 'aws','azure','tencent','gcloud','cloudflare-workers','fn','kubeless','openwhisk','aliyun' ]
       fail-fast: false
     steps:
       - name: Checkout

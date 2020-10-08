@@ -23,7 +23,6 @@ After you've used the action, subsequent steps in the same job can run arbitrary
 - fn
 - kubeless
 - openwhisk
-- spotinst
 
 # Usage
 
