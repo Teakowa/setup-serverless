@@ -7,13 +7,15 @@ import * as credential from './credential';
 
 export async function run() {
   try {
-    const version = core.getInput('serverless_version').toLowerCase();
+    const version: string = await utils.parseVersion(
+      await utils.getInput('serverless_version', false)
+    );
 
     await utils.info(`Installing serverless version ${version} ...`);
     await install(version);
     await utils.info(`Installed serverless version ${version}`);
 
-    const provider = core.getInput('provider');
+    const provider = await utils.getInput('provider', true);
 
     if (!provider) {
       await utils.fail('Missing required arguments');
