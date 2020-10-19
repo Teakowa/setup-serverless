@@ -7,25 +7,26 @@ import {promisify} from 'util';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
+import * as utils from './utils';
 
 export async function run() {
   try {
     const version = core.getInput('serverless_version').toLowerCase();
 
-    info(`Installing serverless version ${version} ...`);
+    await utils.info(`Installing serverless version ${version} ...`);
     await install(version);
-    info(`Installed serverless version ${version}`);
+    await utils.info(`Installed serverless version ${version}`);
 
     const provider = core.getInput('provider');
 
     if (!provider) {
-      fail('Missing required arguments');
+      await utils.fail('Missing required arguments');
     }
 
     await useProvider(provider);
-    info(`Using provider ${provider}.`);
+    await utils.info(`Using provider ${provider}.`);
   } catch (error) {
-    fail(error.message);
+    await utils.fail(error.message);
   }
 }
 
@@ -62,7 +63,7 @@ async function useProvider(provider: string) {
         !process.env['AWS_ACCESS_KEY_ID'] ||
         !process.env['AWS_SECRET_ACCESS_KEY']
       ) {
-        fail(
+        await utils.fail(
           'Missing aws required environment variables: AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY'
         );
       }
@@ -76,7 +77,7 @@ async function useProvider(provider: string) {
         !process.env['AZURE_CLIENT_ID'] ||
         !process.env['AZURE_CLIENT_SECRET']
       ) {
-        fail('Missing azure required environment variables.');
+        await utils.fail('Missing azure required environment variables.');
       }
       break;
     }
@@ -87,7 +88,7 @@ async function useProvider(provider: string) {
       const secretKey = process.env['TENCENT_SECRET_KEY'];
 
       if (!appid || !secretId || !secretKey) {
-        fail('Missing tencent required environment variables.');
+        await utils.fail('Missing tencent required environment variables.');
       }
 
       const context = `[default]
@@ -113,7 +114,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
           : '{}';
 
       if (!keyfile) {
-        fail('Missing google cloud keyfile environment variables.');
+        await utils.fail('Missing google cloud keyfile environment variables.');
       }
 
       await addCredentials(provider, 'keyfile.json', keyfile);
@@ -126,7 +127,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
         !process.env['CLOUDFLARE_AUTH_KEY'] ||
         !process.env['CLOUDFLARE_AUTH_EMAIL']
       ) {
-        fail('Missing cloudflare required environment variables.');
+        await utils.fail('Missing cloudflare required environment variables.');
       }
       break;
     }
@@ -141,7 +142,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
 
     case 'openwhisk': {
       if (!process.env['OW_AUTH'] || !process.env['OW_APIHOST']) {
-        fail('Missing openwhisk required environment variables.');
+        await utils.fail('Missing openwhisk required environment variables.');
       }
       break;
     }
@@ -152,7 +153,7 @@ SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
       const secretKey = process.env['ALICLOUD_SECRET_KEY'];
 
       if (!accountId || !accessKey || !secretKey) {
-        fail('Missing aliyun required environment variables');
+        await utils.fail('Missing aliyun required environment variables');
       }
 
       const context = `[default]
@@ -164,7 +165,7 @@ aliyun_account_id = ${accountId}`;
       break;
     }
     default: {
-      fail('No support for this provider');
+      await utils.fail('No support for this provider');
     }
   }
 }
@@ -177,26 +178,17 @@ async function addCredentials(
   const credentialFile = `${process.env['HOME']}/.${provider}/${fileName}`;
   const folder = path.dirname(credentialFile);
 
-  info(`Creating ${folder}`);
+  await utils.info(`Creating ${folder}`);
   await io.mkdirP(folder);
 
   const writeFileAsync = promisify(writeFile);
-  info(`Adding credentials to ${credentialFile}`);
+  await utils.info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
 }
 
 async function addDotEnv(context: string) {
   const credentialFile = `${process.env['GITHUB_WORKSPACE']}/.env`;
   const writeFileAsync = promisify(writeFile);
-  info(`Adding credentials to ${credentialFile}`);
+  await utils.info(`Adding credentials to ${credentialFile}`);
   await writeFileAsync(credentialFile, context);
-}
-
-function fail(message: string) {
-  core.setFailed(message);
-  process.exit(11);
-}
-
-function info(message: string) {
-  core.info(message);
 }
