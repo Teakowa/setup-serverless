@@ -43,18 +43,26 @@ async function install(version: string) {
     }
   };
 
-  const serverless = `serverless@${version}`;
-  await core.exportVariable('npm_config_loglevel', 'silent');
-  await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
-  await exec.exec('sudo npm', ['install', '-g', serverless], execOptions);
+  const os_version = process.platform;
+
+  const binary_url = `https://github.com/serverless/serverless/releases/download/v${version}/serverless-${os_version}-x64`;
+  const binaries_path = `${process.env['HOME']}/.serverless/bin`;
+  const binary_path = `${binaries_path}/serverless`;
+
+  await utils.info(`Downloading binary...`);
+  await io.mkdirP(binary_path);
+  await exec.exec('curl ', ['-L', '-o', binary_url, binary_path]);
+  await exec.exec('sudo chmod', ['+x', binary_path]);
+
+  await core.addPath(binaries_path);
+  await utils.info(
+    `Added by serverless binary installer\\nexport PATH=${process.env['PATH']}`
+  );
+
+  await exec.exec(binary_path, ['binary-postinstall'], execOptions);
 
   return {
     stdout: output,
     stderr: errOutput
   };
-}
-
-
-
-
 }
