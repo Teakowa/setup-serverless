@@ -63,8 +63,8 @@ async function install(version: string) {
       binaries_path + `/serverless-${os_version}-x64`
     );
     await io.mv(downloaded_file, binary_path);
-    await exec.exec('ls', [`${process.env['HOME']}/.serverless/bin/`]);
-    await exec.exec('sudo chmod', ['+x', binary_path]);
+    await exec.exec('ls', [binaries_path]);
+    await exec.exec('chmod', ['+x', binary_path]);
 
     await core.addPath(binaries_path);
     await utils.info(

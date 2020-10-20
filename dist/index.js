@@ -246,8 +246,8 @@ function install(version) {
             yield io.mkdirP(`${binaries_path}/${version}`);
             let downloaded_file = yield tc.downloadTool(binary_url, binaries_path + `/serverless-${os_version}-x64`);
             yield io.mv(downloaded_file, binary_path);
-            yield exec.exec('ls', [`${process.env['HOME']}/.serverless/bin/`]);
-            yield exec.exec('sudo chmod', ['+x', binary_path]);
+            yield exec.exec('ls', [binaries_path]);
+            yield exec.exec('chmod', ['+x', binary_path]);
             yield core.addPath(binaries_path);
             yield utils.info(`Added by serverless binary installer export PATH=${process.env['PATH']}`);
             yield exec.exec(binary_path, ['binary-postinstall'], execOptions);
