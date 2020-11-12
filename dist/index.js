@@ -201,6 +201,9 @@ const credential = __importStar(__webpack_require__(2166));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            if (process.platform === 'win32') {
+                yield utils.fail('Platform ' + process.platform + ' is not supported');
+            }
             const version = yield utils.parseVersion(yield utils.getInput('serverless_version', false));
             yield utils.info(`Installing serverless version ${version} ...`);
             yield install(version);
@@ -238,7 +241,7 @@ function install(version) {
                     }
                 }
             };
-            const os_version = process.platform;
+            const os_version = process.platform === 'darwin' ? 'macos' : process.platform;
             const binary_url = `https://github.com/serverless/serverless/releases/download/v${version}/serverless-${os_version}-x64`;
             const binaries_path = `${process.env['HOME']}/.serverless/bin`;
             const binary_path = `${binaries_path}/${version}/serverless`;

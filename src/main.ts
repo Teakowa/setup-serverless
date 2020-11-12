@@ -8,6 +8,10 @@ import * as credential from './credential';
 
 export async function run() {
   try {
+    if (process.platform === 'win32') {
+      await utils.fail('Platform ' + process.platform + ' is not supported');
+    }
+
     const version: string = await utils.parseVersion(
       await utils.getInput('serverless_version', false)
     );
@@ -50,7 +54,8 @@ async function install(version: string) {
       }
     };
 
-    const os_version = process.platform;
+    const os_version =
+      process.platform === 'darwin' ? 'macos' : process.platform;
 
     const binary_url = `https://github.com/serverless/serverless/releases/download/v${version}/serverless-${os_version}-x64`;
     const binaries_path = `${process.env['HOME']}/.serverless/bin`;
