@@ -1,7 +1,6 @@
 // External
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
-import * as io from '@actions/io';
 import * as utils from './utils';
 import * as credential from './credential';
 
@@ -52,9 +51,4 @@ async function install(version: string) {
     stdout: output,
     stderr: errOutput
   };
-}
-
-
-
-
 }
