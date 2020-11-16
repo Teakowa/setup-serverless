@@ -12,13 +12,19 @@ on: # rebuild any PRs and main branch changes
 
 jobs:
   build: # make sure build/ci work properly
+    name: 'Build Test'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '12', '14', '15' ]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node 12
+      - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: ${{ matrix.node }}
       - run: npm ci
+      - run: npm install
       - run: npm run format-check
+      - run: npm run test
       - run: npm run build
