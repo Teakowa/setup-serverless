@@ -49,6 +49,8 @@ jobs:
 
       - name: Setup Serverless - ${{ matrix['serverless-versions'] }}
         uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           serverless_version: ${{ matrix['serverless-versions'] }}
           provider: ${{ matrix['providers'] }}

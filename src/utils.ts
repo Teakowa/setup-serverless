@@ -1,6 +1,11 @@
 import * as core from '@actions/core';
 import {Octokit} from '@octokit/rest';
-const octokit = new Octokit();
+
+const octokit = process.env['GITHUB_TOKEN']
+  ? new Octokit({
+      auth: process.env['GITHUB_TOKEN']
+    })
+  : new Octokit();
 
 /**
  * Function to read environment variable and return a string value.
