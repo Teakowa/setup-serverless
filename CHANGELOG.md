@@ -2,6 +2,75 @@
 ## [Unreleased]
 
 
+<a name="v0.4.0"></a>
+## [v0.4.0] - 2020-11-17
+### Bug Fixes
+- **deps:** missing [@octokit](https://github.com/octokit)/rest
+
+### Features
+- add GITHUB_TOKEN env support
+
+### Pull Requests
+- Merge pull request [#38](https://github.com/teakowa/setup-serverless/issues/38) from Teakowa/feature/add-github-token-support
+- Merge pull request [#35](https://github.com/teakowa/setup-serverless/issues/35) from Teakowa/dependabot/npm_and_yarn/actions/tool-cache-1.6.1
+- Merge pull request [#37](https://github.com/teakowa/setup-serverless/issues/37) from Teakowa/fix/missing-octokit-rest
+
+
+<a name="v0.3.0"></a>
+## [v0.3.0] - 2020-11-15
+### Code Refactoring
+- use utils.getInput
+- credentials step move to credential.ts
+- info and fail function move to utils
+
+### Features
+- **utils:** add utils function
+
+### Pull Requests
+- Merge pull request [#34](https://github.com/teakowa/setup-serverless/issues/34) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.7
+- Merge pull request [#33](https://github.com/teakowa/setup-serverless/issues/33) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.7.0
+- Merge pull request [#32](https://github.com/teakowa/setup-serverless/issues/32) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.25.1
+- Merge pull request [#30](https://github.com/teakowa/setup-serverless/issues/30) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.6.3
+- Merge pull request [#19](https://github.com/teakowa/setup-serverless/issues/19) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.15
+- Merge pull request [#31](https://github.com/teakowa/setup-serverless/issues/31) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.25.0
+- Merge pull request [#28](https://github.com/teakowa/setup-serverless/issues/28) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.6.1
+- Merge pull request [#29](https://github.com/teakowa/setup-serverless/issues/29) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.6.2
+- Merge pull request [#25](https://github.com/teakowa/setup-serverless/issues/25) from Teakowa/dependabot/npm_and_yarn/typescript-4.0.5
+- Merge pull request [#26](https://github.com/teakowa/setup-serverless/issues/26) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.5
+- Merge pull request [#23](https://github.com/teakowa/setup-serverless/issues/23) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.3
+- Merge pull request [#22](https://github.com/teakowa/setup-serverless/issues/22) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.6.1
+- Merge pull request [#21](https://github.com/teakowa/setup-serverless/issues/21) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.2
+- Merge pull request [#20](https://github.com/teakowa/setup-serverless/issues/20) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.0
+- Merge pull request [#18](https://github.com/teakowa/setup-serverless/issues/18) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.6.0
+- Merge pull request [#17](https://github.com/teakowa/setup-serverless/issues/17) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.5.0
+- Merge pull request [#15](https://github.com/teakowa/setup-serverless/issues/15) from Teakowa/dependabot/npm_and_yarn/types/node-14.11.10
+- Merge pull request [#14](https://github.com/teakowa/setup-serverless/issues/14) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.4.1
+- Merge pull request [#13](https://github.com/teakowa/setup-serverless/issues/13) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.5.3
+- Merge pull request [#12](https://github.com/teakowa/setup-serverless/issues/12) from Teakowa/dependabot/npm_and_yarn/types/node-14.11.8
+- Merge pull request [#11](https://github.com/teakowa/setup-serverless/issues/11) from Teakowa/dependabot/npm_and_yarn/types/node-14.11.7
+
+
+<a name="v0.3.0-beta.1"></a>
+## [v0.3.0-beta.1] - 2020-10-09
+### Bug Fixes
+- **openwhisk:** OW_APIGW_ACCESS_TOKEN no longer a required parameter
+
+### Code Refactoring
+- remove spotinst in docs and test
+- installation process encapsulated as a function
+- move run() to top
+- fictionalization error and info
+
+### Features
+- add NPM_CONFIG_LOGLEVEL to silent
+
+### Pull Requests
+- Merge pull request [#7](https://github.com/teakowa/setup-serverless/issues/7) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.4.0
+- Merge pull request [#10](https://github.com/teakowa/setup-serverless/issues/10) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.5.2
+- Merge pull request [#8](https://github.com/teakowa/setup-serverless/issues/8) from Teakowa/dependabot/npm_and_yarn/jest-circus-26.5.1
+- Merge pull request [#9](https://github.com/teakowa/setup-serverless/issues/9) from Teakowa/dependabot/npm_and_yarn/types/node-14.11.5
+
+
 <a name="v0.2.0-beta.1"></a>
 ## [v0.2.0-beta.1] - 2020-10-03
 ### Code Refactoring
@@ -14,7 +83,7 @@
 - add azure,gcloud,cloudflare-workers,fn,kubeless,openwhisk support
 
 ### Pull Requests
-- Merge pull request [#6](https://github.com/teakowa/cryptomute/issues/6) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.3.0
+- Merge pull request [#6](https://github.com/teakowa/setup-serverless/issues/6) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.3.0
 
 
 <a name="v0.1.0-beta.4"></a>
@@ -70,11 +139,14 @@
 - add base feature
 
 
-[Unreleased]: https://github.com/teakowa/cryptomute/compare/v0.2.0-beta.1...HEAD
-[v0.2.0-beta.1]: https://github.com/teakowa/cryptomute/compare/v0.1.0-beta.4...v0.2.0-beta.1
-[v0.1.0-beta.4]: https://github.com/teakowa/cryptomute/compare/v0.1.0-beta.3...v0.1.0-beta.4
-[v0.1.0-beta.3]: https://github.com/teakowa/cryptomute/compare/v0.1.0-beta.2...v0.1.0-beta.3
-[v0.1.0-beta.2]: https://github.com/teakowa/cryptomute/compare/v0.1.0-beta.1...v0.1.0-beta.2
-[v0.1.0-beta.1]: https://github.com/teakowa/cryptomute/compare/v0.1.0-alpha.3...v0.1.0-beta.1
-[v0.1.0-alpha.3]: https://github.com/teakowa/cryptomute/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
-[v0.1.0-alpha.2]: https://github.com/teakowa/cryptomute/compare/v0.1.0-alpha.1...v0.1.0-alpha.2
+[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/teakowa/setup-serverless/compare/v0.3.0...v0.4.0
+[v0.3.0]: https://github.com/teakowa/setup-serverless/compare/v0.3.0-beta.1...v0.3.0
+[v0.3.0-beta.1]: https://github.com/teakowa/setup-serverless/compare/v0.2.0-beta.1...v0.3.0-beta.1
+[v0.2.0-beta.1]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-beta.4...v0.2.0-beta.1
+[v0.1.0-beta.4]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-beta.3...v0.1.0-beta.4
+[v0.1.0-beta.3]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-beta.2...v0.1.0-beta.3
+[v0.1.0-beta.2]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-beta.1...v0.1.0-beta.2
+[v0.1.0-beta.1]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-alpha.3...v0.1.0-beta.1
+[v0.1.0-alpha.3]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
+[v0.1.0-alpha.2]: https://github.com/teakowa/setup-serverless/compare/v0.1.0-alpha.1...v0.1.0-alpha.2
