@@ -22,6 +22,12 @@ export async function run() {
 
     await credential.useProvider(provider);
     await utils.info(`Using provider ${provider}.`);
+
+    if (await utils.getInput('path', false)) {
+      await utils.info(`Deploying to ${provider}.`);
+      await exec.exec('sls deploy');
+      await utils.info(`Deployed.`);
+    }
   } catch (error) {
     await utils.fail(error.message);
   }
