@@ -209,7 +209,7 @@ function run() {
             }
             yield credential.useProvider(provider);
             yield utils.info(`Using provider ${provider}.`);
-            if (yield utils.getInput('path', false)) {
+            if (yield utils.getInput('profile', false)) {
                 yield utils.info(`Deploying to ${provider}.`);
                 yield exec.exec('sls deploy');
                 yield utils.info(`Deployed.`);

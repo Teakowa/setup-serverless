@@ -8,8 +8,9 @@ inputs:
   provider:
     required: true
     description: 'Provider of the serverless.'
-  path:
-    required: false
+  profile:
+    required: true
+    description: 'Deployment profile(s).'
 runs:
   using: 'node12'
   main: 'dist/index.js'
