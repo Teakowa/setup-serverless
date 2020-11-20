@@ -51,10 +51,11 @@ steps:
 - uses: Teakowa/setup-serverless@main
   with:
     provider: aws
-    path: .
   env:
     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+
+- run: sls deploy
 ```
 
 Credentials for Azure can be configured.
@@ -64,12 +65,13 @@ steps:
 - uses: Teakowa/setup-serverless@main
   with:
     provider: azure
-    path: .
   env:
     AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID}}
     AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID}}
     AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET}}
+
+- run: sls deploy
 ```
 
 Credentials for Tencent Cloud can be configured.
@@ -79,11 +81,12 @@ steps:
 - uses: Teakowa/setup-serverless@main
   with:
     provider: tencent
-    path: .
   env:
     TENCENT_APPID: ${{ secrets.TENCENT_APP_ID }}
     TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
     TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
+
+- run: sls deploy
 ```
 
 Credentials for Aliyun can be configured.
@@ -93,11 +96,12 @@ steps:
 - uses: Teakowa/setup-serverless@main
   with:
     provider: aliyun
-    path: .
   env:
     ALICLOUD_ACCOUNT_ID: ${{ secrets.ALICLOUD_ACCOUNT_ID }}
     ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
     ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY}}
+
+- run: sls deploy
 ```
 
 ## Inputs
