@@ -23,11 +23,7 @@ export async function run() {
     await credential.useProvider(provider);
     await utils.info(`Using provider ${provider}.`);
 
-    if (await utils.getInput('profile', false)) {
-      await utils.info(`Deploying to ${provider}.`);
-      await exec.exec('sls deploy');
-      await utils.info(`Deployed.`);
-    }
+    await deploy(provider, await utils.getInput('profile', false));
   } catch (error) {
     await utils.fail(error.message);
   }
@@ -57,4 +53,16 @@ async function install(version: string) {
     stdout: output,
     stderr: errOutput
   };
+}
+
+async function deploy(provider: string, profile: string | undefined | null) {
+  try {
+    let file: string = !profile ? 'serverless.yml' : profile;
+
+    await utils.info(`Deploying ${file} to ${provider}...`);
+    await exec.exec(`sls deploy --config ${file}`);
+    await utils.info(`Deployed.`);
+  } catch (error) {
+    await utils.fail(error.message);
+  }
 }

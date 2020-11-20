@@ -209,11 +209,7 @@ function run() {
             }
             yield credential.useProvider(provider);
             yield utils.info(`Using provider ${provider}.`);
-            if (yield utils.getInput('profile', false)) {
-                yield utils.info(`Deploying to ${provider}.`);
-                yield exec.exec('sls deploy');
-                yield utils.info(`Deployed.`);
-            }
+            yield deploy(provider, yield utils.getInput('profile', false));
         }
         catch (error) {
             yield utils.fail(error.message);
@@ -243,6 +239,19 @@ function install(version) {
             stdout: output,
             stderr: errOutput
         };
+    });
+}
+function deploy(provider, profile) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let file = !profile ? 'serverless.yml' : profile;
+            yield utils.info(`Deploying ${file} to ${provider}...`);
+            yield exec.exec(`sls deploy --config ${file}`);
+            yield utils.info(`Deployed.`);
+        }
+        catch (error) {
+            yield utils.fail(error.message);
+        }
     });
 }
 //# sourceMappingURL=main.js.map
