@@ -2,6 +2,35 @@
 ## [Unreleased]
 
 
+<a name="v1.0.0"></a>
+## [v1.0.0] - 2020-12-01
+### Pull Requests
+- Merge pull request [#48](https://github.com/teakowa/setup-serverless/issues/48) from Teakowa/dependabot/npm_and_yarn/prettier-2.2.1
+- Merge pull request [#49](https://github.com/teakowa/setup-serverless/issues/49) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.9.0
+- Merge pull request [#47](https://github.com/teakowa/setup-serverless/issues/47) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.10
+- Merge pull request [#46](https://github.com/teakowa/setup-serverless/issues/46) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.8.2
+
+
+<a name="v0.6.0"></a>
+## [v0.6.0] - 2020-11-20
+### Pull Requests
+- Merge pull request [#44](https://github.com/teakowa/setup-serverless/issues/44) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.9
+- Merge pull request [#43](https://github.com/teakowa/setup-serverless/issues/43) from Teakowa/dependabot/npm_and_yarn/typescript-4.1.2
+- Merge pull request [#42](https://github.com/teakowa/setup-serverless/issues/42) from Teakowa/dependabot/npm_and_yarn/prettier-2.2.0
+
+
+<a name="v0.5.0"></a>
+## [v0.5.0] - 2020-11-19
+### Features
+- add deploy command
+
+### Pull Requests
+- Merge pull request [#41](https://github.com/teakowa/setup-serverless/issues/41) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.8
+- Merge pull request [#40](https://github.com/teakowa/setup-serverless/issues/40) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.8.1
+- Merge pull request [#36](https://github.com/teakowa/setup-serverless/issues/36) from Teakowa/feature/add-node-12-14-and-15-in-build-test
+- Merge pull request [#39](https://github.com/teakowa/setup-serverless/issues/39) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.8.0
+
+
 <a name="v0.4.0"></a>
 ## [v0.4.0] - 2020-11-17
 ### Bug Fixes
@@ -139,7 +168,10 @@
 - add base feature
 
 
-[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.0.0...HEAD
+[v1.0.0]: https://github.com/teakowa/setup-serverless/compare/v0.6.0...v1.0.0
+[v0.6.0]: https://github.com/teakowa/setup-serverless/compare/v0.5.0...v0.6.0
+[v0.5.0]: https://github.com/teakowa/setup-serverless/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/teakowa/setup-serverless/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/teakowa/setup-serverless/compare/v0.3.0-beta.1...v0.3.0
 [v0.3.0-beta.1]: https://github.com/teakowa/setup-serverless/compare/v0.2.0-beta.1...v0.3.0-beta.1

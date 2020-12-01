@@ -32,7 +32,7 @@ The default configuration installs the latest version of Serverless CLI
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@main
+- uses: Teakowa/setup-serverless@v1
 ```
 
 A specific version of Serverless CLI can be installed.
@@ -48,7 +48,7 @@ Credentials for AWS can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@main
+- uses: Teakowa/setup-serverless@v1
   with:
     provider: aws
   env:
@@ -62,7 +62,7 @@ Credentials for Azure can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@main
+- uses: Teakowa/setup-serverless@v1
   with:
     provider: azure
   env:
@@ -78,7 +78,7 @@ Credentials for Tencent Cloud can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@main
+- uses: Teakowa/setup-serverless@v1
   with:
     provider: tencent
   env:
@@ -93,7 +93,7 @@ Credentials for Aliyun can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@main
+- uses: Teakowa/setup-serverless@v1
   with:
     provider: aliyun
   env:
