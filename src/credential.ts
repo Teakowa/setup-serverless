@@ -50,7 +50,8 @@ tencent_secret_key = ${secretKey}`.trim();
       if (process.env['SERVERLESS_PLATFORM_VENDOR'] === 'tencent') {
         const dotEnvContext = `TENCENT_SECRET_ID=${secretId}
 TENCENT_SECRET_KEY=${secretKey}
-SERVERLESS_PLATFORM_VENDOR=${provider}`.trim();
+SERVERLESS_PLATFORM_VENDOR=${provider}
+GLOBAL_ACCELERATOR_NA=true`.trim();
         await addDotEnvFile(dotEnvContext);
       }
       break;
