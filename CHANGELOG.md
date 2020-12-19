@@ -2,6 +2,30 @@
 ## [Unreleased]
 
 
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2020-12-20
+### Features
+- **tencent:** add GLOBAL_ACCELERATOR_NA support for china region
+
+### Pull Requests
+- Merge pull request [#66](https://github.com/teakowa/setup-serverless/issues/66) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.26.0
+- Merge pull request [#65](https://github.com/teakowa/setup-serverless/issues/65) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.14
+- Merge pull request [#64](https://github.com/teakowa/setup-serverless/issues/64) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.10.0
+- Merge pull request [#62](https://github.com/teakowa/setup-serverless/issues/62) from Teakowa/dependabot/npm_and_yarn/typescript-4.1.3
+- Merge pull request [#63](https://github.com/teakowa/setup-serverless/issues/63) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.13
+- Merge pull request [#61](https://github.com/teakowa/setup-serverless/issues/61) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.19
+- Merge pull request [#60](https://github.com/teakowa/setup-serverless/issues/60) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.12
+- Merge pull request [#58](https://github.com/teakowa/setup-serverless/issues/58) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.11
+- Merge pull request [#54](https://github.com/teakowa/setup-serverless/issues/54) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.12
+- Merge pull request [#55](https://github.com/teakowa/setup-serverless/issues/55) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.17
+- Merge pull request [#57](https://github.com/teakowa/setup-serverless/issues/57) from Teakowa/dependabot/npm_and_yarn/js-yaml-3.14.1
+- Merge pull request [#56](https://github.com/teakowa/setup-serverless/issues/56) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.9.1
+- Merge pull request [#53](https://github.com/teakowa/setup-serverless/issues/53) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.11
+- Merge pull request [#50](https://github.com/teakowa/setup-serverless/issues/50) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.10
+- Merge pull request [#51](https://github.com/teakowa/setup-serverless/issues/51) from Teakowa/dependabot/npm_and_yarn/semver-7.3.4
+- Merge pull request [#52](https://github.com/teakowa/setup-serverless/issues/52) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.16
+
+
 <a name="v1.0.0"></a>
 ## [v1.0.0] - 2020-12-01
 ### Pull Requests
@@ -168,7 +192,8 @@
 - add base feature
 
 
-[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/teakowa/setup-serverless/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/teakowa/setup-serverless/compare/v0.6.0...v1.0.0
 [v0.6.0]: https://github.com/teakowa/setup-serverless/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/teakowa/setup-serverless/compare/v0.4.0...v0.5.0
