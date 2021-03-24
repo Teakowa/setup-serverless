@@ -2,6 +2,59 @@
 ## [Unreleased]
 
 
+<a name="v1.1.1"></a>
+## [v1.1.1] - 2021-03-24
+### Pull Requests
+- Merge pull request [#119](https://github.com/teakowa/setup-serverless/issues/119) from Teakowa/dependabot/npm_and_yarn/semver-7.3.5
+- Merge pull request [#120](https://github.com/teakowa/setup-serverless/issues/120) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.19.0
+- Merge pull request [#116](https://github.com/teakowa/setup-serverless/issues/116) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.35
+- Merge pull request [#118](https://github.com/teakowa/setup-serverless/issues/118) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.21
+- Merge pull request [#117](https://github.com/teakowa/setup-serverless/issues/117) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.18.0
+- Merge pull request [#112](https://github.com/teakowa/setup-serverless/issues/112) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.17.0
+- Merge pull request [#113](https://github.com/teakowa/setup-serverless/issues/113) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.3.5
+- Merge pull request [#115](https://github.com/teakowa/setup-serverless/issues/115) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.34
+- Merge pull request [#109](https://github.com/teakowa/setup-serverless/issues/109) from Teakowa/dependabot/npm_and_yarn/typescript-4.2.3
+- Merge pull request [#107](https://github.com/teakowa/setup-serverless/issues/107) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.3.2
+- Merge pull request [#103](https://github.com/teakowa/setup-serverless/issues/103) from Teakowa/dependabot/npm_and_yarn/typescript-4.2.2
+- Merge pull request [#105](https://github.com/teakowa/setup-serverless/issues/105) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.16.1
+- Merge pull request [#106](https://github.com/teakowa/setup-serverless/issues/106) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.3.1
+- Merge pull request [#102](https://github.com/teakowa/setup-serverless/issues/102) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.2.1
+- Merge pull request [#101](https://github.com/teakowa/setup-serverless/issues/101) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.15.2
+- Merge pull request [#100](https://github.com/teakowa/setup-serverless/issues/100) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.31
+- Merge pull request [#99](https://github.com/teakowa/setup-serverless/issues/99) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.30
+- Merge pull request [#98](https://github.com/teakowa/setup-serverless/issues/98) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.2.0
+- Merge pull request [#97](https://github.com/teakowa/setup-serverless/issues/97) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.15.1
+- Merge pull request [#96](https://github.com/teakowa/setup-serverless/issues/96) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.28
+- Merge pull request [#95](https://github.com/teakowa/setup-serverless/issues/95) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.1.1
+- Merge pull request [#94](https://github.com/teakowa/setup-serverless/issues/94) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.26
+- Merge pull request [#93](https://github.com/teakowa/setup-serverless/issues/93) from Teakowa/dependabot/npm_and_yarn/typescript-4.1.5
+- Merge pull request [#92](https://github.com/teakowa/setup-serverless/issues/92) from Teakowa/dependabot/npm_and_yarn/typescript-4.1.4
+- Merge pull request [#91](https://github.com/teakowa/setup-serverless/issues/91) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.15.0
+- Merge pull request [#90](https://github.com/teakowa/setup-serverless/issues/90) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.25
+- Merge pull request [#89](https://github.com/teakowa/setup-serverless/issues/89) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.24
+- Merge pull request [#88](https://github.com/teakowa/setup-serverless/issues/88) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.1.0
+- Merge pull request [#87](https://github.com/teakowa/setup-serverless/issues/87) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.14.2
+- Merge pull request [#85](https://github.com/teakowa/setup-serverless/issues/85) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.14.1
+- Merge pull request [#86](https://github.com/teakowa/setup-serverless/issues/86) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.15
+- Merge pull request [#84](https://github.com/teakowa/setup-serverless/issues/84) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.14
+- Merge pull request [#83](https://github.com/teakowa/setup-serverless/issues/83) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.0.13
+- Merge pull request [#82](https://github.com/teakowa/setup-serverless/issues/82) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.22
+- Merge pull request [#81](https://github.com/teakowa/setup-serverless/issues/81) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.14.0
+- Merge pull request [#80](https://github.com/teakowa/setup-serverless/issues/80) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.21
+- Merge pull request [#78](https://github.com/teakowa/setup-serverless/issues/78) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.13.0
+- Merge pull request [#79](https://github.com/teakowa/setup-serverless/issues/79) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.27.0
+- Merge pull request [#77](https://github.com/teakowa/setup-serverless/issues/77) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.20
+- Merge pull request [#76](https://github.com/teakowa/setup-serverless/issues/76) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.26.2
+- Merge pull request [#74](https://github.com/teakowa/setup-serverless/issues/74) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.12.0
+- Merge pull request [#75](https://github.com/teakowa/setup-serverless/issues/75) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.20
+- Merge pull request [#72](https://github.com/teakowa/setup-serverless/issues/72) from Teakowa/dependabot/npm_and_yarn/js-yaml-4.0.0
+- Merge pull request [#71](https://github.com/teakowa/setup-serverless/issues/71) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.17
+- Merge pull request [#70](https://github.com/teakowa/setup-serverless/issues/70) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.11.1
+- Merge pull request [#69](https://github.com/teakowa/setup-serverless/issues/69) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.16
+- Merge pull request [#68](https://github.com/teakowa/setup-serverless/issues/68) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.11.0
+- Merge pull request [#67](https://github.com/teakowa/setup-serverless/issues/67) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.26.1
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0] - 2020-12-20
 ### Features
@@ -192,7 +245,8 @@
 - add base feature
 
 
-[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/teakowa/setup-serverless/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/teakowa/setup-serverless/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/teakowa/setup-serverless/compare/v0.6.0...v1.0.0
 [v0.6.0]: https://github.com/teakowa/setup-serverless/compare/v0.5.0...v0.6.0
