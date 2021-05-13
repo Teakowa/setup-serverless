@@ -2,6 +2,23 @@
 ## [Unreleased]
 
 
+<a name="v1.1.2"></a>
+## [v1.1.2] - 2021-05-13
+### Pull Requests
+- Merge pull request [#134](https://github.com/teakowa/setup-serverless/issues/134) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.28.2
+- Merge pull request [#135](https://github.com/teakowa/setup-serverless/issues/135) from Teakowa/dependabot/npm_and_yarn/typescript-4.2.4
+- Merge pull request [#133](https://github.com/teakowa/setup-serverless/issues/133) from Teakowa/dependabot/npm_and_yarn/vercel/ncc-0.28.1
+- Merge pull request [#131](https://github.com/teakowa/setup-serverless/issues/131) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.21.0
+- Merge pull request [#126](https://github.com/teakowa/setup-serverless/issues/126) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.37
+- Merge pull request [#127](https://github.com/teakowa/setup-serverless/issues/127) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.5.2
+- Merge pull request [#128](https://github.com/teakowa/setup-serverless/issues/128) from Teakowa/dependabot/npm_and_yarn/typescript-eslint/parser-4.20.0
+- Merge pull request [#129](https://github.com/teakowa/setup-serverless/issues/129) from Teakowa/dependabot/npm_and_yarn/y18n-4.0.1
+- Merge pull request [#130](https://github.com/teakowa/setup-serverless/issues/130) from Teakowa/dependabot/npm_and_yarn/actions/io-1.1.0
+- Merge pull request [#123](https://github.com/teakowa/setup-serverless/issues/123) from Teakowa/dependabot/npm_and_yarn/types/jest-26.0.22
+- Merge pull request [#124](https://github.com/teakowa/setup-serverless/issues/124) from Teakowa/dependabot/npm_and_yarn/types/node-14.14.36
+- Merge pull request [#125](https://github.com/teakowa/setup-serverless/issues/125) from Teakowa/dependabot/npm_and_yarn/octokit/rest-18.5.0
+
+
 <a name="v1.1.1"></a>
 ## [v1.1.1] - 2021-03-24
 ### Pull Requests
@@ -245,7 +262,8 @@
 - add base feature
 
 
-[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/teakowa/setup-serverless/compare/v1.1.2...HEAD
+[v1.1.2]: https://github.com/teakowa/setup-serverless/compare/v1.1.1...v1.1.2
 [v1.1.1]: https://github.com/teakowa/setup-serverless/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/teakowa/setup-serverless/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/teakowa/setup-serverless/compare/v0.6.0...v1.0.0
