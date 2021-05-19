@@ -73,7 +73,7 @@ export async function findLatest() {
     per_page: 3
   });
 
-  return data[0].tag_name;
+  return data[0].tag_name.substr(1);
 }
 
 export async function getAllVersion(total = 300) {

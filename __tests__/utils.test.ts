@@ -31,7 +31,7 @@ describe('Utils tests', () => {
       owner: 'serverless',
       repo: 'serverless'
     });
-    expect(await utils.findLatest()).toBe(latest_tag.tag_name);
+    expect(await utils.findLatest()).toBe(latest_tag.tag_name.substr(1));
   });
 
   it('checking getAllVersion', async () => {
