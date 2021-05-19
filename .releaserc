@@ -1,0 +1,37 @@
+{
+  "branches": [
+      "next", "release"
+  ],
+  "plugins": [
+    [
+        "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "docs",
+            "scope": "README",
+            "release": "patch"
+          },
+          {
+            "type": "refactor",
+            "release": "patch"
+          },
+          {
+            "scope": "no-release",
+            "release": false
+          }
+        ]
+      }
+    ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+    [
+        "@semantic-release/changelog",
+      {
+        "changelogFile": "./CHANGELOG.md"
+      }
+    ]
+  ],
+  "preset": "angular"
+}

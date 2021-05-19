@@ -1,0 +1,42 @@
+name: Semantic Release
+
+on:
+  pull_request_review:
+    types: [ submitted ]
+
+jobs:
+  release:
+    name: Release
+    if: contains(github.event.pull_request.labels.*.name, 'type/next-release')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+
+      - id: set_var
+        run: |
+          content=`cat ./package.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=packageJson::$content"
+      - run: |
+          echo "${{fromJson(steps.set_var.outputs.packageJson).version}}"
+      - run: |
+          git config --global user.email "semantic-release-bot@martynus.net"
+          git config --global user.name "semantic-release-bot"
+          git tag -a v${{fromJson(steps.set_var.outputs.packageJson).version}} ${{ github.event.pull_request.head.sha }} -m ''
+          git push origin v${{fromJson(steps.set_var.outputs.packageJson).version}}
+      - name: Create Release for Tag
+        id: release_tag
+        uses: yyx990803/release-tag@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{fromJson(steps.set_var.outputs.packageJson).version}}
+          body: |
+            ${{ github.event.pull_request.body }}

@@ -1,0 +1,51 @@
+name: Semantic Release PR
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  create-pr:
+    name: Release Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Remove Semantic Tag
+        run: git push --delete origin v${{ steps.semantic.outputs.new_release_version }}
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3.9.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]'
+          title: Release Proposal v${{ steps.semantic.outputs.new_release_version }} (Stable)
+          branch: next
+          delete-branch: true
+          reviewers: UnionMusic/infra
+          labels: |
+            status/needs-review
+            type/next-release
+          body: |
+            ${{ steps.semantic.outputs.new_release_notes }}
+          base: main
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
