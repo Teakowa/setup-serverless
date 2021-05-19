@@ -3,6 +3,8 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as utils from './utils';
 import * as credential from './credential';
+import {saveCache, restoreCache} from '@actions/cache';
+import * as os from 'os';
 
 export async function run() {
   try {
@@ -42,13 +44,64 @@ async function install(version: string) {
     }
   };
 
-  const serverless = `serverless@${version}`;
+  const platform = mapOS(os.platform());
+  const arch = mapArch(os.arch());
+  const key = `serverless-${platform}-${arch}-${version}-${await utils.getInput(
+    'provider',
+    true
+  )}-${parseInt((new Date().getTime() / 1000).toFixed(0))}`;
+  const restoreKeys = [
+    `serverless-${platform}-${arch}-${version}-${await utils.getInput(
+      'provider',
+      true
+    )}-`
+  ];
+  const slsBin = `${process.env.HOME}/.serverless/bin`;
+  const slsFolder = [`${slsBin}/serverless`];
+
   await core.exportVariable('npm_config_loglevel', 'silent');
   await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
-  await exec.exec('sudo npm', ['install', '-g', serverless], execOptions);
+  await core.exportVariable('VERSION', version);
+
+  await utils.info(`Try to restore cache...`);
+  const cacheKey = await restoreCache([slsBin], key, restoreKeys);
+
+  if (!cacheKey) {
+    await exec.exec(
+      `/bin/bash -c "curl -o- -L https://sls-standalone-1300963013.cos.ap-shanghai.myqcloud.com/install.sh | bash"`,
+      [],
+      execOptions
+    );
+  }
+  core.addPath(slsBin);
+
+  const cacheId = await saveCache([slsBin], key);
+  await utils.info(`cacheId: ${cacheId}`);
+
+  await exec.exec('sls -v');
+  await exec.exec(`${slsFolder} binary-postinstall`);
 
   return {
     stdout: output,
     stderr: errOutput
   };
+}
+
+// arch in [arm, x32, x64...] (https://nodejs.org/api/os.html#os_os_arch)
+// return value in [amd64, 386, arm]
+function mapArch(arch) {
+  const mappings = {
+    x32: '386',
+    x64: 'amd64'
+  };
+  return mappings[arch] || arch;
+}
+
+// os in [darwin, linux, win32...] (https://nodejs.org/api/os.html#os_os_platform)
+// return value in [darwin, linux, windows]
+function mapOS(os) {
+  const mappings = {
+    win32: 'windows'
+  };
+  return mappings[os] || os;
 }
