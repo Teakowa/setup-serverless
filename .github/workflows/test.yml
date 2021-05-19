@@ -44,4 +44,10 @@ jobs:
       - run: yarn
       - run: yarn format-check
       - run: yarn test
+
+      - uses: actions/cache@v2
+        with:
+          path: ./dist
+          key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
+
       - run: yarn build
