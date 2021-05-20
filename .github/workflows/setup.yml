@@ -34,7 +34,7 @@ env:
 
 jobs:
   serverless-versions:
-    name: 'Serverless Versions'
+    name: 'Setup Serverless'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
