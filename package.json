@@ -5,7 +5,7 @@
   "description": "TypeScript template action",
   "main": "lib/setup-serverless.js",
   "scripts": {
-    "build": "tsc && ncc build",
+    "build": "tsc && ncc build -m",
     "build-prod": "run-s clean build",
     "clean": "rimraf lib dist",
     "format": "prettier --write **/*.ts",
