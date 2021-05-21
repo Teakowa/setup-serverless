@@ -37,13 +37,12 @@ jobs:
           title: Release Proposal v${{ steps.semantic.outputs.new_release_version }} (Stable)
           branch: next
           delete-branch: true
-          reviewers: UnionMusic/infra
           labels: |
             status/needs-review
             type/next-release
           body: |
             ${{ steps.semantic.outputs.new_release_notes }}
-          base: main
+          base: 2.x
 
       - name: Check outputs
         run: |
