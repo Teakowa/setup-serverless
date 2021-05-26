@@ -111,6 +111,12 @@ The action supports the following inputs:
 - `serverless_version`: (optional) The version of Serverless CLI to install. Instead of a full version string, you can also specify a constraint string (see [Advanced Range Syntax](https://www.npmjs.com/package/semver#advanced-range-syntax) for available range specifications). Examples are: ^2.4, ~2.4, 2.4.x (all three installing the latest available 2.4 version). The special value of latest installs the latest version of Serverless CLI. Defaults to latest.
 - `provider`: (**required**) The infrastructure provider of serverless framework. All characters must be lowercase.
 
+## Contributing
+Contributions, issues and feature requests are welcome!
+Feel free to check [issues page](https://github.com/Teakowa/setup-serverless/issues).
+
+
+
 ## License
 
 The code in this repository, unless otherwise noted, is under the terms of both the [Anti 996](./LICENSE-ANTI996) License and the [Apache License (Version 2.0)](./LICENSE-APACHE).
