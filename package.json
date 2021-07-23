@@ -41,7 +41,7 @@
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.0",
     "@typescript-eslint/parser": "^4.28.3",
-    "@vercel/ncc": "^0.28.6",
+    "@vercel/ncc": "^0.29.0",
     "husky": "^7.0.1",
     "jest": "^24.9.0",
     "jest-circus": "^27.0.6",
