@@ -14,17 +14,17 @@ After you've used the action, subsequent steps in the same job can run arbitrary
 
 ## Support Providers
 
-- aws
-- azure
-- tencent
+- [AWS](#aws)
+- [Azure](#azure)
+- [Tencent](#tencent-cloud)
 - knative
-- alibaba cloud
+- [Alibaba Cloud](#aliyun)
 - cloudflare workers
 - fn
 - kubeless
 - openwhisk
 
-# Usage
+## Usage
 
 This action can be run on `ubuntu-latest` and `macos-latest` GitHub Actions runners.
 
@@ -44,6 +44,8 @@ steps:
     serverless_version: 2.4.0
 ```
 
+### AWS
+
 Credentials for AWS can be configured.
 
 ```yaml
@@ -57,6 +59,8 @@ steps:
 
 - run: sls deploy
 ```
+
+### Azure
 
 Credentials for Azure can be configured.
 
@@ -74,6 +78,8 @@ steps:
 - run: sls deploy
 ```
 
+### Tencent Cloud
+
 Credentials for Tencent Cloud can be configured.
 
 ```yaml
@@ -88,6 +94,26 @@ steps:
 
 - run: sls deploy
 ```
+
+> **If you need to use Tencent Cloud in China, you need to set the environment variable SERVERLESS_PLATFORM_VENDOR to tencent.**
+> 
+> **You don't need TENCENT_TOKEN, because it is not currently supported.**
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v2.0.0
+  with:
+    provider: tencent
+  env:
+    TENCENT_APPID: ${{ secrets.TENCENT_APP_ID }}
+    TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+    TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY}}
+    SERVERLESS_PLATFORM_VENDOR: tencent # Must be set here to use in China
+
+- run: sls deploy
+```
+
+### Aliyun
 
 Credentials for Aliyun can be configured.
 
