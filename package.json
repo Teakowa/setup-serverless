@@ -42,7 +42,7 @@
     "@types/node": "^16.10.9",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/ncc": "^0.31.1",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "jest": "^24.9.0",
     "jest-circus": "^27.2.5",
     "js-yaml": "^4.1.0",
