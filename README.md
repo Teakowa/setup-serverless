@@ -39,7 +39,7 @@ A specific version of Serverless CLI can be installed.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@2.0.0
+- uses: Teakowa/setup-serverless@v2.0.0
   with:
     serverless_version: 2.4.0
 ```
