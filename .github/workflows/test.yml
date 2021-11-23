@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - uses: actions/cache@v2.1.6
+      - uses: actions/cache@v2.1.7
         id: node-modules-cache
         with:
           path: |
@@ -40,7 +40,7 @@ jobs:
       - run: yarn format-check
       - run: yarn test
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v2.1.7
         with:
           path: ./dist
           key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
