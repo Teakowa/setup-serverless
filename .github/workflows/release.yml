@@ -1,0 +1,18 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+      - rc
+      - beta
+      - alpha
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Release
+    uses: XNXKTech/workflows/.github/workflows/release.yml@main
+    secrets:
+      CI_PAT: ${{ secrets.CI_PAT }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
