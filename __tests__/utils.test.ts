@@ -23,7 +23,7 @@ describe('Utils tests', () => {
   });
 
   it('checking parseVersion', async () => {
-    expect(await utils.parseVersion('2.8.0')).toBe('2.8.0');
+    expect(await utils.parseVersion('2.71.0')).toBe('2.71.0');
   });
 
   it('checking findLatest', async () => {
