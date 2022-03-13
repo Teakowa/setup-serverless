@@ -12,7 +12,25 @@ on:
 jobs:
   release:
     name: Release
-    uses: XNXKTech/workflows/.github/workflows/release.yml@main
-    secrets:
-      CI_PAT: ${{ secrets.CI_PAT }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ steps.semantic.outputs.new_release_version }}
+      new_release_major_version: ${{ steps.semantic.outputs.new_release_major_version }}
+      new_release_minor_version: ${{ steps.semantic.outputs.new_release_minor_version }}
+      new_release_patch_version: ${{ steps.semantic.outputs.new_release_patch_version }}
+      new_release_channel: ${{ steps.semantic.outputs.new_release_channel }}
+      new_release_notes: ${{ steps.semantic.outputs.new_release_notes }}
+      last_release_version: ${{ steps.semantic.outputs.last_release_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
