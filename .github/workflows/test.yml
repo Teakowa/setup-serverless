@@ -9,7 +9,7 @@ on: # rebuild any PRs and main branch changes
 
 jobs:
   build: # make sure build/ci work properly
-    name: 'Build Test'
+    name: 'Build'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,12 +37,40 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           HUSKY_SKIP_INSTALL: true
 
-      - run: yarn format-check
-      - run: yarn test
-
       - uses: actions/cache@v2.1.7
         with:
           path: ./dist
           key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
 
       - run: yarn build
+
+  tests:
+    name: 'Tests'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '14', '16', '17' ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - uses: actions/cache@v2.1.7
+        id: node-modules-cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn
+
+      - name: Install package.json dependencies with Yarn
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          HUSKY_SKIP_INSTALL: true
+
+      - run: yarn test
