@@ -25,7 +25,7 @@ export async function run() {
     await credential.useProvider(provider);
     await utils.info(`Using provider ${provider}.`);
   } catch (error) {
-    await utils.fail(error.message);
+    if (error instanceof Error) await utils.fail(error.message);
   }
 }
 
