@@ -39,7 +39,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
-        serverless-versions: [ 1.83.0, 2.42.0, latest ]
+        serverless-versions: [ 2.71.0, 3.7.0, latest ]
         providers: [ 'aws','azure','tencent','gcloud','cloudflare-workers','fn','kubeless','openwhisk','aliyun' ]
     steps:
       - name: Checkout
