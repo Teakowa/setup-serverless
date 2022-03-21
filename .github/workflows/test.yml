@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - uses: actions/cache@v2.1.7
+      - uses: actions/cache@v3
         id: node-modules-cache
         with:
           path: |
@@ -37,7 +37,7 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           HUSKY_SKIP_INSTALL: true
 
-      - uses: actions/cache@v2.1.7
+      - uses: actions/cache@v3
         with:
           path: ./dist
           key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
@@ -57,7 +57,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - uses: actions/cache@v2.1.7
+      - uses: actions/cache@v3
         id: node-modules-cache
         with:
           path: |
