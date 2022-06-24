@@ -1,7 +1,21 @@
 {
   "branches": [
-      "1.x", "2.x"
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    {
+      "name": "rc",
+      "prerelease": true
+    },
+    {
+      "name": "beta",
+      "prerelease": true
+    },
+    {
+      "name": "alpha",
+      "prerelease": true
+    }
   ],
+  "ci": false,
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -70,7 +84,7 @@
     [
       "@semantic-release/changelog",
       {
-        "changelogFile": "CHANGELOG.md",
+        "changelogFile": "CHANGELOG-2.x.md",
         "changelogTitle": "# Changelog\n\nAll notable changes to this project will be documented in this file."
       }
     ],
@@ -78,15 +92,9 @@
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "CHANGELOG-2.x.md"
         ],
         "message": "chore(release): version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      }
-    ],
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false
       }
     ]
   ]
