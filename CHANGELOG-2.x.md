@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.5](https://github.com/Teakowa/setup-serverless/compare/v2.0.4...v2.0.5) (2022-10-25)
+
+
+### :memo: Documentação
+
+* update badge ([1fb84ce](https://github.com/Teakowa/setup-serverless/commit/1fb84ce1001518fce2d6f30ff1d4c475b9a35e06))
+
 ## [2.0.4](https://github.com/Teakowa/setup-serverless/compare/v2.0.3...v2.0.4) (2022-10-25)
 
 
