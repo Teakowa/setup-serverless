@@ -1,5 +1,8 @@
-name: 'Build Test'
-on: # rebuild any PRs and main branch changes
+name: 'Continuous Integration'
+on:
+  push:
+    branches:
+    - main
   pull_request:
     paths-ignore:
       - '**.md'
@@ -34,40 +37,14 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           HUSKY_SKIP_INSTALL: true
 
-      - uses: actions/cache@v3
+      - name: Cache dist
+        uses: actions/cache@v3
         with:
           path: ./dist
           key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
 
-      - run: yarn build
+      - name: Verify
+        run: yarn build
 
-  tests:
-    name: 'Tests'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ '14', '16', '18' ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node ${{ matrix.node }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-
-      - uses: actions/cache@v3
-        id: node-modules-cache
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn
-
-      - name: Install package.json dependencies with Yarn
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          HUSKY_SKIP_INSTALL: true
-
-      - run: yarn test
+      - name: Test
+        run: yarn test
