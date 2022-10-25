@@ -1,6 +1,6 @@
 # setup-serverless
 
-![Build Test](https://github.com/Teakowa/setup-serverless/workflows/Build%20Test/badge.svg)
+[![Continuous Integration](https://github.com/Teakowa/setup-serverless/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/Teakowa/setup-serverless/actions/workflows/continuous-integration.yml)
 ![Setup Serverless](https://github.com/Teakowa/setup-serverless/workflows/Setup%20Serverless/badge.svg)
 [![LICENSE](https://img.shields.io/badge/License-Apache--2.0-green.svg?style=flat-square)](LICENSE)
 [![LICENSE](https://img.shields.io/badge/License-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
