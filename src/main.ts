@@ -68,7 +68,7 @@ async function install(version: string) {
 
   if (!cacheKey) {
     await exec.exec(
-      `/bin/bash -c "curl -o- -L https://sls-standalone-1300963013.cos.ap-shanghai.myqcloud.com/install.sh | bash"`,
+      `/bin/bash -c "curl -o- -L https://slss.io/install | VERSION=${version} bash"`,
       [],
       execOptions
     );
