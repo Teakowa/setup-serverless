@@ -73,7 +73,7 @@ export async function findLatest() {
     per_page: 3
   });
 
-  return data[0].tag_name.substr(1);
+  return data[0].tag_name.substring(1);
 }
 
 export async function getAllVersion(total = 300) {
@@ -86,7 +86,7 @@ export async function getAllVersion(total = 300) {
   let versions: string[] = [];
 
   for (let item of data) {
-    versions.push(item.tag_name.substr(1));
+    versions.push(item.tag_name.substring(1));
   }
 
   return versions;
