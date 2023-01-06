@@ -31,7 +31,7 @@ env:
 
 jobs:
   serverless-versions:
-    name: 'Setup Serverless'
+    name: 'Run'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -41,34 +41,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Setup Node ${{ matrix.node }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-
-      - uses: actions/cache@v3
-        id: node-modules-cache
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn
-
-      - name: Install package.json dependencies with Yarn
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          HUSKY_SKIP_INSTALL: true
-
-      - uses: actions/cache@v3
-        with:
-          path: ./dist
-          key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
-
-      - run: yarn build
 
       - name: Setup Serverless - ${{ matrix['serverless-versions'] }}
         uses: ./
