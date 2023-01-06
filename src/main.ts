@@ -5,6 +5,9 @@ import * as utils from './utils';
 import * as credential from './credential';
 import {saveCache, restoreCache} from '@actions/cache';
 import * as os from 'os';
+import * as glob from '@actions/glob';
+
+
 
 export async function run() {
   try {
@@ -44,42 +47,51 @@ async function install(version: string) {
     }
   };
 
+  const provider = await utils.getInput('provider', true);
+  const slsFolder = `${process.env.HOME}/.serverless/bin`;
+  const slsBin = `${slsFolder}/serverless`;
   const platform = mapOS(os.platform());
   const arch = mapArch(os.arch());
-  const key = `serverless-${platform}-${arch}-${version}-${await utils.getInput(
-    'provider',
-    true
-  )}-${parseInt((new Date().getTime() / 1000).toFixed(0))}`;
+
   const restoreKeys = [
-    `serverless-${platform}-${arch}-${version}-${await utils.getInput(
-      'provider',
-      true
-    )}-`
-  ];
-  const slsBin = `${process.env.HOME}/.serverless/bin`;
-  const slsFolder = [`${slsBin}/serverless`];
+    `serverless-${platform}-${arch}-${version}-${provider}-`,
+    `serverless-${platform}-${arch}-${version}-`
+  ]
 
   await core.exportVariable('npm_config_loglevel', 'silent');
   await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
   await core.exportVariable('VERSION', version);
 
-  await utils.info(`Try to restore cache...`);
-  const cacheKey = await restoreCache([slsBin], key, restoreKeys);
+  const fileHash = await glob.hashFiles(slsBin);
+
+  core.debug(`Try to restore cache...`);
+  let key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
+  const cacheKey = await restoreCache([slsFolder], key, restoreKeys);
 
   if (!cacheKey) {
+    core.debug(`cache is not found`);
+    await utils.info(`Attempting to download ${version}`);
     await exec.exec(
       `/bin/bash -c "curl -o- -L https://slss.io/install | VERSION=${version} bash"`,
       [],
       execOptions
     );
+
+
+    let key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
+    const cacheId = await saveCache([slsFolder], key);
+    core.debug(`cacheId: ${cacheId}`);
+    if (cacheId == -1) {
+      return;
+    }
+
+  } else {
+    core.setOutput('cache-hit', Boolean(cacheKey));
+    await utils.info(`Cache restored from key: ${cacheKey}`);
   }
-  core.addPath(slsBin);
 
-  const cacheId = await saveCache([slsBin], key);
-  await utils.info(`cacheId: ${cacheId}`);
-
+  core.addPath(slsFolder);
   await exec.exec('sls -v');
-  await exec.exec(`${slsFolder} binary-postinstall`);
 
   return {
     stdout: output,
