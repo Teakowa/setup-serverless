@@ -11,15 +11,21 @@ const octokit = process.env['GITHUB_TOKEN']
  * Function to read environment variable and return a string value.
  *
  * @param property
+ *
+ * https://github.com/shivammathur/setup-php/blob/master/src/utils.ts
+ *
  */
 export async function readEnv(property: string): Promise<string> {
-  const value = process.env[property];
-  switch (value) {
-    case undefined:
-      return '';
-    default:
-      return value;
-  }
+  const property_lc: string = property.toLowerCase();
+  const property_uc: string = property.toUpperCase();
+  return (
+    process.env[property] ||
+    process.env[property_lc] ||
+    process.env[property_uc] ||
+    process.env[property_lc.replace('_', '-')] ||
+    process.env[property_uc.replace('_', '-')] ||
+    ''
+  );
 }
 
 /**
