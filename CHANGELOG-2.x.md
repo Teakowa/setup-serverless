@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.6-beta.1](https://github.com/Teakowa/setup-serverless/compare/v2.0.5...v2.0.6-beta.1) (2023-01-06)
+
+
+### :recycle: Refactor
+
+* **utils:** add LowerCase and UpperCase support in readEnv ([2916feb](https://github.com/Teakowa/setup-serverless/commit/2916feb51e7adfa1a80567672f5d417a30723ba6))
+* **cache:** re-design cache in install step ([11d0879](https://github.com/Teakowa/setup-serverless/commit/11d0879b41cef09365f84d875d30cd0098bbe5c3))
+
 ## [2.0.5](https://github.com/Teakowa/setup-serverless/compare/v2.0.4...v2.0.5) (2022-10-25)
 
 
