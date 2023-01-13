@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.6](https://github.com/Teakowa/setup-serverless/compare/v2.0.5...v2.0.6) (2023-01-13)
+
+
+### :recycle: Refactor
+
+* **cache:** re-design cache in install step ([#644](https://github.com/Teakowa/setup-serverless/issues/644)) ([148ce09](https://github.com/Teakowa/setup-serverless/commit/148ce09100c79715521d2f40b101d7109f9f281d))
+
 ## [2.0.5](https://github.com/Teakowa/setup-serverless/compare/v2.0.4...v2.0.5) (2022-10-25)
 
 
