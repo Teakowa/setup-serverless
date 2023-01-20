@@ -142,8 +142,6 @@ The action supports the following inputs:
 - Use the `v2` tag as `setup-serverless` version. It is a rolling tag and is synced with the latest minor and patch releases. With `v2` you automatically get the bug fixes, security patches, new features and support for latest `setup-serverless` releases.
 - Semantic release versions can also be used. It is recommended to [use dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) with semantic versioning to keep the actions in your workflows up to date.
 
-
-
 ## Contributing
 Contributions, issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/Teakowa/setup-serverless/issues).

@@ -42,3 +42,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update Tag
+        if: ${{ steps.semantic.outputs.new_release_published == 'true' }}
+        run: |
+          git tag -f v2
+          git push origin v2 --force
+
+      - name: Update release
+        if: ${{ steps.semantic.outputs.new_release_published == 'true' }}
+        id: update_release
+        uses: tubone24/update_release@v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: v2
+        with:
+          release_name: v2
