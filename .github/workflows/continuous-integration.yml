@@ -2,10 +2,20 @@ name: 'Continuous Integration'
 on:
   push:
     branches:
-    - main
+      - main
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/continuous-integration.yml'
   pull_request:
-    paths-ignore:
-      - '**.md'
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/continuous-integration.yml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

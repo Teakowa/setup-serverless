@@ -3,9 +3,19 @@ name: 'Setup Serverless'
 on:
   push:
     branches: [ main ]
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/setup.yml'
   pull_request:
-    paths-ignore:
-      - '**.md'
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/setup.yml'
 
 defaults:
   run:
