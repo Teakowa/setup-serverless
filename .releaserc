@@ -22,10 +22,6 @@
       {
         "releaseRules": [
           {
-            "type": "docs",
-            "release": "patch"
-          },
-          {
             "type": "refactor",
             "release": "patch"
           },
@@ -39,10 +35,6 @@
           },
           {
             "type": "cosm",
-            "release": "patch"
-          },
-          {
-            "type": "ci",
             "release": "patch"
           }
         ],
