@@ -39,7 +39,6 @@
     "@actions/io": "^1.1.2",
     "@actions/tool-cache": "^2.0.1",
     "@octokit/rest": "^19.0.5",
-    "node-fetch": "^2.6.7",
     "semver": "^7.3.8"
   },
   "devDependencies": {
