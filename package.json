@@ -86,5 +86,12 @@
   },
   "engines": {
     "node": ">=16.6.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ]
   }
 }
