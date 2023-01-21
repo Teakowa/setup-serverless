@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.8](https://github.com/Teakowa/setup-serverless/compare/v2.0.7...v2.0.8) (2023-01-21)
+
+
+### :white_check_mark: Testes
+
+* add collectCoverage for jest [skip ci] ([b38e3b8](https://github.com/Teakowa/setup-serverless/commit/b38e3b88063cb82d30115f7bd8102fffe7521bfe))
+
 ## [2.0.7](https://github.com/Teakowa/setup-serverless/compare/v2.0.6...v2.0.7) (2023-01-21)
 
 
