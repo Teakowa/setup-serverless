@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.7](https://github.com/Teakowa/setup-serverless/compare/v2.0.6...v2.0.7) (2023-01-21)
+
+
+### :memo: Documentação
+
+* update README ([906cf80](https://github.com/Teakowa/setup-serverless/commit/906cf80bec2f9970774536d75f0fd1485913325d))
+
+
+### :recycle: Refactor
+
+* type structures ([8881153](https://github.com/Teakowa/setup-serverless/commit/88811539aa11f1bf3c56addd921d82f72c0d08ec))
+
 ## [2.0.6](https://github.com/Teakowa/setup-serverless/compare/v2.0.5...v2.0.6) (2023-01-13)
 
 
