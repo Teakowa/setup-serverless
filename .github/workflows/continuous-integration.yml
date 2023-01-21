@@ -39,22 +39,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: 'npm'
 
-      - uses: actions/cache@v3
-        id: node-modules-cache
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn
-
-      - name: Install package.json dependencies with Yarn
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          HUSKY_SKIP_INSTALL: true
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
 
       - name: Prettier Format Check
         run: npm run format-check
@@ -62,17 +50,11 @@ jobs:
       - name: ESLint Check
         run: npm run lint
 
-      - name: Cache dist
-        uses: actions/cache@v3
-        with:
-          path: ./dist
-          key: ${{ runner.os }}-dist-${{ hashFiles('./dist/index.js') }}
-
-      - name: Verify
-        run: yarn build
+      - name: Build
+        run: npm run build
 
       - name: Test
-        run: yarn test
+        run: npm test
 
       - name: Send Coverage
         uses: codecov/codecov-action@v3
