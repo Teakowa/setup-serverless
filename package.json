@@ -11,6 +11,7 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "release": "npm run build-prod && git add -f dist/",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
@@ -23,8 +24,13 @@
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "Teakowa",
   "license": "MIT",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__",
+    "src": "src"
+  },
   "dependencies": {
     "@actions/cache": "^3.1.2",
     "@actions/core": "^1.10.0",
