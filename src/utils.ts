@@ -58,12 +58,12 @@ export async function getInput(
  * @param version
  */
 export async function parseVersion(version: string) {
+  const allVersions = await getAllVersion();
+
   switch (version) {
     case 'latest':
       return findLatest();
     default:
-      let allVersions = await getAllVersion();
-
       if (!allVersions.includes(version)) {
         await fail(`The version ${version} is not supported.`);
         throw new Error(`The version ${version} is not supported.`);
@@ -89,9 +89,9 @@ export async function getAllVersion(total = 300) {
     per_page: total
   });
 
-  let versions: string[] = [];
+  const versions: string[] = [];
 
-  for (let item of data) {
+  for (const item of data) {
     versions.push(item.tag_name.substring(1));
   }
 

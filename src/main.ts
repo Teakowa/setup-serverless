@@ -7,8 +7,6 @@ import {saveCache, restoreCache} from '@actions/cache';
 import * as os from 'os';
 import * as glob from '@actions/glob';
 
-
-
 export async function run() {
   try {
     const version: string = await utils.parseVersion(
@@ -33,8 +31,8 @@ export async function run() {
 }
 
 async function install(version: string) {
-  let output: string = '';
-  let errOutput: string = '';
+  let output = '';
+  let errOutput = '';
 
   const execOptions = {
     listeners: {
@@ -56,7 +54,7 @@ async function install(version: string) {
   const restoreKeys = [
     `serverless-${platform}-${arch}-${version}-${provider}-`,
     `serverless-${platform}-${arch}-${version}-`
-  ]
+  ];
 
   await core.exportVariable('npm_config_loglevel', 'silent');
   await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
@@ -65,7 +63,7 @@ async function install(version: string) {
   const fileHash = await glob.hashFiles(slsBin);
 
   core.debug(`Try to restore cache...`);
-  let key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
+  const key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
   const cacheKey = await restoreCache([slsFolder], key, restoreKeys);
 
   if (!cacheKey) {
@@ -77,14 +75,12 @@ async function install(version: string) {
       execOptions
     );
 
-
-    let key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
+    const key = `serverless-${platform}-${arch}-${version}-${provider}-${fileHash}`;
     const cacheId = await saveCache([slsFolder], key);
     core.debug(`cacheId: ${cacheId}`);
     if (cacheId == -1) {
       return;
     }
-
   } else {
     core.setOutput('cache-hit', Boolean(cacheKey));
     await utils.info(`Cache restored from key: ${cacheKey}`);
