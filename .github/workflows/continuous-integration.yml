@@ -52,6 +52,12 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           HUSKY_SKIP_INSTALL: true
 
+      - name: Prettier Format Check
+        run: npm run format-check
+
+      - name: ESLint Check
+        run: npm run lint
+
       - name: Cache dist
         uses: actions/cache@v3
         with:
