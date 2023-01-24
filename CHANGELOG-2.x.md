@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.9](https://github.com/Teakowa/setup-serverless/compare/v2.0.8...v2.0.9) (2023-01-24)
+
+
+### :recycle: Refactor
+
+* remove NPM_CONFIG_LOGLEVEL and VERSION Environment Variables ([#657](https://github.com/Teakowa/setup-serverless/issues/657)) ([94e4619](https://github.com/Teakowa/setup-serverless/commit/94e461963d18efd446fdc825d5bbea9cafd13f00))
+
 ## [2.0.8](https://github.com/Teakowa/setup-serverless/compare/v2.0.7...v2.0.8) (2023-01-21)
 
 
