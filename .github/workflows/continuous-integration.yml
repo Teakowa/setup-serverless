@@ -17,6 +17,9 @@ on:
       - '**.lock'
       - '.github/workflows/continuous-integration.yml'
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
