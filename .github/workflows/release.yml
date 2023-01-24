@@ -10,6 +10,8 @@ on:
       - rc
       - beta
       - alpha
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 env:
