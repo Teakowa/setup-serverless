@@ -165,10 +165,6 @@ The action supports the following inputs:
 Contributions, issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/Teakowa/setup-serverless/issues).
 
-## License
-
-The code in this repository, unless otherwise noted, is under the terms of both the [Anti 996](./LICENSE-ANTI996) License and the [Apache License (Version 2.0)](./LICENSE-APACHE).
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -199,3 +195,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+The code in this repository, unless otherwise noted, is under the terms of both the [Anti 996](./LICENSE-ANTI996) License and the [Apache License (Version 2.0)](./LICENSE-APACHE).
