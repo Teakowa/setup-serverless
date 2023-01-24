@@ -56,10 +56,6 @@ async function install(version: string) {
     `serverless-${platform}-${arch}-${version}-`
   ];
 
-  await core.exportVariable('npm_config_loglevel', 'silent');
-  await core.exportVariable('NPM_CONFIG_LOGLEVEL', 'silent');
-  await core.exportVariable('VERSION', version);
-
   const fileHash = await glob.hashFiles(slsBin);
 
   core.debug(`Try to restore cache...`);
