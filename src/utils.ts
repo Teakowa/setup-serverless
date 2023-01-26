@@ -73,13 +73,12 @@ export async function parseVersion(version: string) {
 }
 
 export async function findLatest() {
-  const {data} = await octokit.repos.listReleases({
+  const {data} = await octokit.repos.getLatestRelease({
     owner: 'serverless',
-    repo: 'serverless',
-    per_page: 3
+    repo: 'serverless'
   });
 
-  return data[0].tag_name.substring(1);
+  return data.tag_name.substring(1);
 }
 
 export async function getAllVersion(total = 300) {
