@@ -28,14 +28,6 @@
           {
             "type": "perf",
             "release": "patch"
-          },
-          {
-            "type": "test",
-            "release": "patch"
-          },
-          {
-            "type": "cosm",
-            "release": "patch"
           }
         ],
         "parserOpts": {
@@ -69,11 +61,6 @@
               "section": ":bug: Bug Fixes"
             },
             {
-              "type": "docs",
-              "section": ":memo: Documentação",
-              "hidden": false
-            },
-            {
               "type": "refactor",
               "section": ":recycle: Refactor",
               "hidden": false
@@ -81,21 +68,6 @@
             {
               "type": "perf",
               "section": ":zap: Performance",
-              "hidden": false
-            },
-            {
-              "type": "test",
-              "section": ":white_check_mark: Testes",
-              "hidden": false
-            },
-            {
-              "type": "ci",
-              "section": ":repeat: CI",
-              "hidden": false
-            },
-            {
-              "type": "cosm",
-              "section": ":repeat: Cosmetics",
               "hidden": false
             },
             {
