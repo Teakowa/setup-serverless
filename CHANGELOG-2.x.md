@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.10](https://github.com/Teakowa/setup-serverless/compare/v2.0.9...v2.0.10) (2023-01-26)
+
+
+### :memo: Documentação
+
+* add trackgit [skip ci] ([9c2b34a](https://github.com/Teakowa/setup-serverless/commit/9c2b34adf5d3fee380748c80a15930902fa2f7ac))
+* move contributors on top of license ([8835000](https://github.com/Teakowa/setup-serverless/commit/8835000aed5a70325771a78a7aa5afdfee29cc5a))
+* update ([590561c](https://github.com/Teakowa/setup-serverless/commit/590561c700b6fa67599c5a254778bde1f8f2562f))
+
+
+### :recycle: Refactor
+
+* use `getLatestRelease` instead `listReleases` in `findLatest` ([#664](https://github.com/Teakowa/setup-serverless/issues/664)) ([0ac45a7](https://github.com/Teakowa/setup-serverless/commit/0ac45a7ab4d7705dbf4d5a255bec50ee38155bce))
+
 ## [2.0.9](https://github.com/Teakowa/setup-serverless/compare/v2.0.8...v2.0.9) (2023-01-24)
 
 
