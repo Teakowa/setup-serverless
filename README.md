@@ -199,3 +199,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 ## License
 
 The code in this repository, unless otherwise noted, is under the terms of both the [Anti 996](./LICENSE-ANTI996) License and the [Apache License (Version 2.0)](./LICENSE-APACHE).
+
+
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/ldd800yy365z6w5gbsql" alt="trackgit-views" />
+</a>
