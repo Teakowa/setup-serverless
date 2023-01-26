@@ -25,10 +25,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-dist:
-    name: Check dist/ directory
-    uses: actions/reusable-workflows/.github/workflows/check-dist.yml@a8533f184b279cfc1b2dd6a96ed2f097ccf81189
-
   build:
     name: Build
     runs-on: ${{ matrix.os }}

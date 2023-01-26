@@ -1,0 +1,27 @@
+name: Check dist/
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+  pull_request:
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  call-check-dist:
+    name: Check dist/
+    uses: actions/reusable-workflows/.github/workflows/check-dist.yml@main
