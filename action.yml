@@ -8,6 +8,11 @@ inputs:
   provider:
     required: true
     description: 'Provider of the serverless.'
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate if a cache was hit.'
+  serverless_version:
+    description: 'The installed serverless version.'
 runs:
   using: 'node16'
   main: 'dist/index.js'
