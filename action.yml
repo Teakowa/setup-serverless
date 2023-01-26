@@ -1,5 +1,5 @@
 name: 'Setup Serverless environment'
-description: '⚡:octocat: A Github Action for deploying with the Serverless Framework'
+description: '⚡:octocat: Setup a Serverless environment by matchers optionally downloading and adding it to the PATH.'
 inputs:
   serverless_version:
     description: "Version Spec of the version to use.  Examples: 2.4.0, ~2.0.0, ^2.0.0"
