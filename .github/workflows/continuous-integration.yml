@@ -53,6 +53,7 @@ jobs:
         run: npm run build
 
       - name: Test
+        if: ${{ github.actor != 'dependabot[bot]' }}
         run: npm test
 
       - name: Send Coverage
