@@ -6,5 +6,10 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'ts-jest'
   },
+  collectCoverage: true,
+  coverageReporters: [
+    "text",
+    "cobertura"
+  ],
   verbose: true
 }
