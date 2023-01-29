@@ -34,27 +34,32 @@ jobs:
         node: [ '16', '18', '19' ]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
-          cache: 'npm'
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci --ignore-scripts
+        run: pnpm i --ignore-scripts
 
       - name: Prettier Format Check
-        run: npm run format-check
+        run: pnpm run format-check
 
       - name: ESLint Check
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Test
         if: ${{ github.actor != 'dependabot[bot]' }}
-        run: npm test
+        run: pnpm test
 
       - name: Send Coverage
         uses: codecov/codecov-action@v3
