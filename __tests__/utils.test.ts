@@ -11,8 +11,8 @@ jest.mock('@actions/core', () => ({
   })
 }));
 
-jest.spyOn(octokit.repos, 'listReleases')
-jest.spyOn(octokit.repos, 'getLatestRelease')
+jest.spyOn(octokit.repos, 'listReleases');
+jest.spyOn(octokit.repos, 'getLatestRelease');
 
 beforeEach(() => {
   process.env['test'] = 'setup-serverless';
@@ -59,5 +59,5 @@ describe('Utils tests', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 });
