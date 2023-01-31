@@ -17,6 +17,7 @@ jobs:
   call-check-dist:
     name: Check dist
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
