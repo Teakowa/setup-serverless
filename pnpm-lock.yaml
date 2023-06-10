@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@actions/cache':
-    specifier: ^3.1.2
-    version: 3.1.2
+    specifier: ^3.2.1
+    version: 3.2.1
   '@actions/core':
     specifier: ^1.10.0
     version: 1.10.0
@@ -93,8 +93,8 @@ devDependencies:
 
 packages:
 
-  /@actions/cache@3.1.2:
-    resolution: {integrity: sha512-3XeKcXIonfIbqvW7gPm/VLOhv1RHQ1dtTgSBCH6OUhCgSTii9bEVgu0PIms7UbLnXeMCKFzECfpbud8fJEvBbQ==}
+  /@actions/cache@3.2.1:
+    resolution: {integrity: sha512-QurbMiY//02+0kN1adJkMHN44RcZ5kAXfhSnKUZmtSmhMTNqLitGArG1xOkt93NNyByTlLGAc5wIOF/dZ2ENOQ==}
     dependencies:
       '@actions/core': 1.10.0
       '@actions/exec': 1.1.1
@@ -103,7 +103,7 @@ packages:
       '@actions/io': 1.1.2
       '@azure/abort-controller': 1.1.0
       '@azure/ms-rest-js': 2.6.4
-      '@azure/storage-blob': 12.12.0
+      '@azure/storage-blob': 12.14.0
       semver: 6.3.0
       uuid: 3.4.0
     transitivePeerDependencies:
@@ -170,8 +170,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@azure/core-http@2.3.1:
-    resolution: {integrity: sha512-cur03BUwV0Tbv81bQBOLafFB02B6G++K6F2O3IMl8pSE2QlXm3cu11bfyBNlDUKi5U+xnB3GC63ae3athhkx6Q==}
+  /@azure/core-http@3.0.2:
+    resolution: {integrity: sha512-o1wR9JrmoM0xEAa0Ue7Sp8j+uJvmqYaGoHOCT5qaVYmvgmnZDC0OvQimPA/JR3u77Sz6D1y3Xmk1y69cDU9q9A==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
@@ -184,11 +184,10 @@ packages:
       form-data: 4.0.0
       node-fetch: 2.6.8
       process: 0.11.10
-      tough-cookie: 4.1.2
       tslib: 2.5.0
       tunnel: 0.0.6
       uuid: 8.3.2
-      xml2js: 0.4.23
+      xml2js: 0.5.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -248,12 +247,12 @@ packages:
       - encoding
     dev: false
 
-  /@azure/storage-blob@12.12.0:
-    resolution: {integrity: sha512-o/Mf6lkyYG/eBW4/hXB9864RxVNmAkcKHjsGR6Inlp5hupa3exjSyH2KjO3tLO//YGA+tS+17hM2bxRl9Sn16g==}
-    engines: {node: '>=12.0.0'}
+  /@azure/storage-blob@12.14.0:
+    resolution: {integrity: sha512-g8GNUDpMisGXzBeD+sKphhH5yLwesB4JkHr1U6be/X3F+cAMcyGLPD1P89g2M7wbEtUJWoikry1rlr83nNRBzg==}
+    engines: {node: '>=14.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
-      '@azure/core-http': 2.3.1
+      '@azure/core-http': 3.0.2
       '@azure/core-lro': 2.5.0
       '@azure/core-paging': 1.4.0
       '@azure/core-tracing': 1.0.0-preview.13
@@ -5828,6 +5827,7 @@ packages:
 
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
+    dev: true
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -6002,6 +6002,7 @@ packages:
 
   /requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: true
 
   /resolve-cwd@3.0.0:
     resolution: {integrity: sha512-OrZaX2Mb+rJCpH/6CpSqt9xFVpN++x01XnN2ie9g6P5/3xelLAkXWVADpdz1IHD/KFfEXyE6V0U01OQ3UO2rEg==}
@@ -6739,6 +6740,7 @@ packages:
       punycode: 2.3.0
       universalify: 0.2.0
       url-parse: 1.5.10
+    dev: true
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
@@ -6930,6 +6932,7 @@ packages:
   /universalify@0.2.0:
     resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
     engines: {node: '>= 4.0.0'}
+    dev: true
 
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
@@ -6976,6 +6979,7 @@ packages:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+    dev: true
 
   /use@3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
@@ -7178,6 +7182,14 @@ packages:
 
   /xml2js@0.4.23:
     resolution: {integrity: sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==}
+    engines: {node: '>=4.0.0'}
+    dependencies:
+      sax: 1.2.4
+      xmlbuilder: 11.0.1
+    dev: false
+
+  /xml2js@0.5.0:
+    resolution: {integrity: sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==}
     engines: {node: '>=4.0.0'}
     dependencies:
       sax: 1.2.4
