@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.11](https://github.com/Teakowa/setup-serverless/compare/v2.0.10...v2.0.11) (2023-08-05)
+
+
+### :recycle: Refactor
+
+* remove node 16 support update dist ([5ffffb6](https://github.com/Teakowa/setup-serverless/commit/5ffffb6a6890bff2e509c4672fff23889031c3f4))
+
 ## [2.0.10](https://github.com/Teakowa/setup-serverless/compare/v2.0.9...v2.0.10) (2023-01-26)
 
 
