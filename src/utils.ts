@@ -1,9 +1,13 @@
 import * as core from '@actions/core';
 import {Octokit} from '@octokit/rest';
+import fetch from 'node-fetch';
 
 export function getOctokit(): Octokit {
   return new Octokit({
-    auth: process.env['GITHUB_TOKEN']
+    auth: process.env['GITHUB_TOKEN'],
+    request: {
+      fetch
+    }
   });
 }
 

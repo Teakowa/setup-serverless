@@ -1,6 +1,5 @@
 import * as utils from '../src/utils';
-import {Octokit} from '@octokit/rest';
-const octokit = new Octokit();
+const octokit = utils.getOctokit();
 
 /**
  * Mock @actions/core
