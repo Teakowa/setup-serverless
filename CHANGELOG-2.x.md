@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.13](https://github.com/Teakowa/setup-serverless/compare/v2.0.12...v2.0.13) (2023-08-10)
+
+
+### :recycle: Refactor
+
+* update dist with deps ([4a15335](https://github.com/Teakowa/setup-serverless/commit/4a15335e88293ef2daa8262df2ef617c93ee1bd7))
+
 ## [2.0.11](https://github.com/Teakowa/setup-serverless/compare/v2.0.10...v2.0.11) (2023-08-05)
 
 
