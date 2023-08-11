@@ -1,4 +1,4 @@
-name: 'Setup Serverless'
+name: Versions
 
 on:
   push:
@@ -46,8 +46,8 @@ env:
   ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY}}
 
 jobs:
-  serverless-versions:
-    name: 'Run'
+  setup:
+    name: Setup
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -67,9 +67,6 @@ jobs:
           provider: ${{ matrix['providers'] }}
 
       - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
-        if: ${{ matrix['serverless-versions'] != 'latest' }}
-        run: sls -v
-
-      - name: Validate Teraform Version - ${{ matrix['serverless-versions'] }}
-        if: ${{ matrix['serverless-versions'] == 'latest' }}
-        run: sls -v
+        run: |
+          serverless -v
+          sls -v

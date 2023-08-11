@@ -6,6 +6,7 @@ import * as glob from '@actions/glob';
 import os from 'os';
 import {exec} from '@actions/exec';
 import * as fs from 'fs';
+import * as path from 'path';
 
 const platform = mapOS(os.platform());
 const arch = mapArch(os.arch());
@@ -26,6 +27,18 @@ export const restoreCache = async (version: string) => {
     core.debug(`Cache not found for input keys: ${primaryKey}`);
     return false;
   }
+
+  const restoredPath = path.join(cachePath, 'serverless');
+
+  if (!fs.existsSync(restoredPath)) {
+    throw new Error(
+      `The specified serverless version file at: ${restoredPath} does not exist`
+    );
+  }
+
+  core.debug(`Cache restored from key: ${cacheKey}`);
+  core.debug(`Cache restored at path: ${restoredPath}`);
+
   core.setOutput('cache-hit', Boolean(cacheKey));
   await utils.info(`Cache restored from key: ${cacheKey}`);
   return true;
