@@ -56,7 +56,7 @@ Examples:
 - [Tencent](#tencent-cloud)
 - knative
 - [Alibaba Cloud](#aliyun)
-- cloudflare workers
+- [cloudflare workers](#cloudflare-workers)
 - fn
 - kubeless
 - openwhisk
@@ -147,6 +147,31 @@ steps:
     ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY}}
 
 - run: sls deploy
+```
+
+### Cloudflare Workers
+
+Credentials for Cloudflare Workers can be configured.
+
+```yaml
+steps:
+- uses: Teakowa/setup-serverless@v2
+  with:
+    provider: cloudflare-workers
+  env:
+    CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
+    CLOUDFLARE_AUTH_EMAIL: ${{ secrets.CLOUDFLARE_AUTH_EMAIL }}
+
+- name: Deploy
+  run: |
+    sls plugin install -n serverless-cloudflare-workers
+    sls deploy
+  env:
+    CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
+    CLOUDFLARE_AUTH_EMAIL: ${{ secrets.CLOUDFLARE_AUTH_EMAIL }}
+    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+    CLOUDFLARE_WORKER_NAME: ${{ secrets.CLOUDFLARE_WORKER_NAME }}
 ```
 
 ## Inputs
