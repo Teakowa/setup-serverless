@@ -1,5 +1,5 @@
 // External
-import {addPath} from '@actions/core';
+import * as core from '@actions/core';
 import {exec} from '@actions/exec';
 import * as utils from './utils';
 import {isCacheFeatureAvailable} from './cache-utils';
@@ -31,11 +31,14 @@ async function install(version: string) {
   const slsFolder = `${process.env.HOME}/.serverless/bin`;
 
   if (isCacheFeatureAvailable()) {
-    if (await restoreCache(version)) return;
+    await restoreCache(version);
   } else {
     await download(version);
   }
 
-  addPath(slsFolder);
+  core.debug(`Adding ${slsFolder} to PATH`);
+  core.addPath(slsFolder);
+  core.debug(`PATH: ${process.env.PATH}`);
+
   await exec('sls -v');
 }

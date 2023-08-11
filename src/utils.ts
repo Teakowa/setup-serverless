@@ -59,7 +59,7 @@ export async function getInput(
  */
 export async function parseVersion(version: string | null) {
   if (!version || version === 'latest') {
-    return findLatest()
+    return findLatest();
   }
 
   return version;
@@ -82,7 +82,7 @@ export async function findLatest() {
 
 export async function getAllVersion(total = 300) {
   const octokit = getOctokit();
-  
+
   const {data} = await octokit.repos.listReleases({
     owner: 'serverless',
     repo: 'serverless',
