@@ -22,18 +22,18 @@ export const restoreCache = async (version: string) => {
 
   core.debug(`Try to restore cache...`);
   const cacheKey = await cache.restoreCache([cachePath], primaryKey);
+  const restoredPath = path.join(cachePath, 'serverless');
 
   if (!cacheKey) {
     core.debug(`Cache not found for input keys: ${primaryKey}`);
+
+    if (!fs.existsSync(restoredPath)) {
+      core.debug(`The specified serverless at: ${restoredPath} does not exist`);
+      // try to download
+      await download(version);
+    }
+
     return false;
-  }
-
-  const restoredPath = path.join(cachePath, 'serverless');
-
-  if (!fs.existsSync(restoredPath)) {
-    throw new Error(
-      `The specified serverless version file at: ${restoredPath} does not exist`
-    );
   }
 
   core.debug(`Cache restored from key: ${cacheKey}`);
@@ -67,12 +67,6 @@ export const download = async (version: string) => {
     [],
     execOptions
   );
-
-  if (!fs.existsSync(cachePath)) {
-    throw new Error(
-      `Cache folder path is retrieved for severless but doesn't exist on disk: ${cachePath}`
-    );
-  }
 
   const fileHash = await glob.hashFiles(slsBin);
   core.debug(`File hash: ${fileHash}`);

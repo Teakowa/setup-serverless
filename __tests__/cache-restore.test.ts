@@ -7,6 +7,11 @@ import {restoreCache} from '../src/cache-restore';
 describe('cache-restore', () => {
   process.env['GITHUB_WORKSPACE'] = path.join(__dirname, 'data');
 
+  if (!process.env.RUNNER_OS) {
+    process.env.RUNNER_OS = 'Linux';
+  }
+
+  const platform = process.env.RUNNER_OS;
   const cachePath = `${process.env.HOME}/.serverless/bin`;
   const slsFileHash =
     'abf7c9b306a3149dcfba4673e2362755503bcceaab46f0e4e6fee0ade493e20c';
@@ -71,18 +76,15 @@ describe('cache-restore', () => {
     it.each([
       ['linux', 'amd64', '3.19.0', slsFileHash],
       ['darwin', 'arm64', '3.19.0', slsFileHash]
-    ])(
-      'restored dependencies for %s',
-      async (platform, arch, version, fileHash) => {
-        await restoreCache(version);
+    ])('restored for %s', async (version, fileHash) => {
+      await restoreCache(version);
 
-        expect(hashFilesSpy).toHaveBeenCalled();
-        expect(infoSpy).not.toHaveBeenCalledWith(
-          `Cache not found for input keys:`
-        );
-        expect(setOutputSpy).toHaveBeenCalledWith('cache-hit', true);
-      }
-    );
+      expect(hashFilesSpy).toHaveBeenCalled();
+      expect(infoSpy).not.toHaveBeenCalledWith(
+        `Cache not found for input keys:`
+      );
+      expect(setOutputSpy).toHaveBeenCalledWith('cache-hit', true);
+    });
   });
 
   afterEach(() => {
