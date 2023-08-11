@@ -61,15 +61,15 @@ export async function getInput(
  *
  * @param version
  */
-export async function parseVersion(version: string | null) {
+export async function parseVersion(version: string | null): Promise<string> {
   if (!version || version === 'latest') {
     return findLatest();
   }
 
-  return version;
+  return await getVersion(version);
 }
 
-export async function findLatest() {
+export async function findLatest(): Promise<string> {
   const octokit = getOctokit();
 
   const {data} = await octokit.repos.getLatestRelease({
@@ -80,22 +80,16 @@ export async function findLatest() {
   return data.tag_name.substring(1);
 }
 
-export async function getAllVersion(total = 300) {
+export async function getVersion(version: string): Promise<string> {
   const octokit = getOctokit();
 
-  const {data} = await octokit.repos.listReleases({
+  const {data} = await octokit.repos.getReleaseByTag({
     owner: 'serverless',
     repo: 'serverless',
-    per_page: total
+    tag: `v${version}`
   });
 
-  const versions: string[] = [];
-
-  for (const item of data) {
-    versions.push(item.tag_name.substring(1));
-  }
-
-  return versions;
+  return data.tag_name.substring(1);
 }
 
 export async function fail(message: string) {

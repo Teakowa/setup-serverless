@@ -468,7 +468,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.info = exports.fail = exports.getAllVersion = exports.findLatest = exports.parseVersion = exports.getInput = exports.readEnv = exports.getOctokit = void 0;
+exports.info = exports.fail = exports.getVersion = exports.findLatest = exports.parseVersion = exports.getInput = exports.readEnv = exports.getOctokit = void 0;
 const core = __importStar(__nccwpck_require__(7733));
 const rest_1 = __nccwpck_require__(3652);
 const node_fetch_1 = __importDefault(__nccwpck_require__(187));
@@ -535,7 +535,7 @@ function parseVersion(version) {
         if (!version || version === 'latest') {
             return findLatest();
         }
-        return version;
+        return yield getVersion(version);
     });
 }
 exports.parseVersion = parseVersion;
@@ -550,22 +550,18 @@ function findLatest() {
     });
 }
 exports.findLatest = findLatest;
-function getAllVersion(total = 300) {
+function getVersion(version) {
     return __awaiter(this, void 0, void 0, function* () {
         const octokit = getOctokit();
-        const { data } = yield octokit.repos.listReleases({
+        const { data } = yield octokit.repos.getReleaseByTag({
             owner: 'serverless',
             repo: 'serverless',
-            per_page: total
+            tag: `v${version}`
         });
-        const versions = [];
-        for (const item of data) {
-            versions.push(item.tag_name.substring(1));
-        }
-        return versions;
+        return data.tag_name.substring(1);
     });
 }
-exports.getAllVersion = getAllVersion;
+exports.getVersion = getVersion;
 function fail(message) {
     return __awaiter(this, void 0, void 0, function* () {
         core.setFailed(message);
