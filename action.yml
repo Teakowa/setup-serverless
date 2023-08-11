@@ -1,4 +1,4 @@
-name: 'Setup Serverless environment'
+name: 'Setup Serverless'
 description: '⚡:octocat: Setup a Serverless environment by matchers optionally downloading and adding it to the PATH.'
 inputs:
   serverless_version:
