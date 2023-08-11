@@ -1,11 +1,11 @@
 import * as core from '@actions/core';
 import {Octokit} from '@octokit/rest';
 
-const octokit = process.env['GITHUB_TOKEN']
-  ? new Octokit({
-      auth: process.env['GITHUB_TOKEN']
-    })
-  : new Octokit();
+export function getOctokit(): Octokit {
+  return new Octokit({
+    auth: process.env['GITHUB_TOKEN']
+  });
+}
 
 /**
  * Function to read environment variable and return a string value.
@@ -57,22 +57,17 @@ export async function getInput(
  *
  * @param version
  */
-export async function parseVersion(version: string) {
-  const allVersions = await getAllVersion();
-
-  switch (version) {
-    case 'latest':
-      return findLatest();
-    default:
-      if (!allVersions.includes(version)) {
-        await fail(`The version ${version} is not supported.`);
-        throw new Error(`The version ${version} is not supported.`);
-      }
-      return version;
+export async function parseVersion(version: string | null) {
+  if (!version || version === 'latest') {
+    return findLatest();
   }
+
+  return version;
 }
 
 export async function findLatest() {
+  const octokit = getOctokit();
+
   const {data} = await octokit.repos.getLatestRelease({
     owner: 'serverless',
     repo: 'serverless'
@@ -82,6 +77,8 @@ export async function findLatest() {
 }
 
 export async function getAllVersion(total = 300) {
+  const octokit = getOctokit();
+
   const {data} = await octokit.repos.listReleases({
     owner: 'serverless',
     repo: 'serverless',
