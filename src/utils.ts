@@ -66,16 +66,12 @@ export async function parseVersion(version: string | null) {
 }
 
 export async function findLatest() {
-  core.debug('Requesting for [latest] version ...');
-
   const octokit = getOctokit();
 
   const {data} = await octokit.repos.getLatestRelease({
     owner: 'serverless',
     repo: 'serverless'
   });
-
-  core.debug(`... version resolved to [${data.name}]`);
 
   return data.tag_name.substring(1);
 }
