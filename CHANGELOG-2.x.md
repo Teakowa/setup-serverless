@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.1](https://github.com/Teakowa/setup-serverless/compare/v2.1.0...v2.1.1) (2023-08-12)
+
+
+### :recycle: Refactor
+
+* **utils:** Re-design getAllVersion to solve API rate limit error ([#752](https://github.com/Teakowa/setup-serverless/issues/752)) ([eb4a195](https://github.com/Teakowa/setup-serverless/commit/eb4a195482aefd444786a7a0456a8753628b617f)), closes [#751](https://github.com/Teakowa/setup-serverless/issues/751)
+
 ## [2.0.13](https://github.com/Teakowa/setup-serverless/compare/v2.0.12...v2.0.13) (2023-08-10)
 
 
