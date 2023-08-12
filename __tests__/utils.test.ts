@@ -1,5 +1,6 @@
 import * as utils from '../src/utils';
 const octokit = utils.getOctokit();
+const slsVersion = '3.27.0';
 
 /**
  * Mock @actions/core
@@ -39,9 +40,21 @@ describe('Utils tests', () => {
     }).rejects.toThrow('Input required and not supplied: DoesNotExist');
   });
 
-  it('checking parseVersion', async () => {
-    expect(await utils.parseVersion('3.27.0')).toBe('3.27.0');
-    expect(await utils.parseVersion('2.71.0')).toBe('2.71.0');
+  describe('parseVersion', () => {
+    it('should return latest version when input is null', async () => {
+      const result = await utils.parseVersion(null);
+      expect(result).not.toBeNull();
+    });
+
+    it('should return latest version when input is "latest"', async () => {
+      const result = await utils.parseVersion('latest');
+      expect(result).not.toBeNull();
+    });
+
+    it('should return the same version when input is a valid version', async () => {
+      const result = await utils.parseVersion(slsVersion);
+      expect(result).toEqual(slsVersion);
+    });
   });
 
   it('checking findLatest', async () => {
@@ -52,8 +65,8 @@ describe('Utils tests', () => {
     expect(await utils.findLatest()).toBe(latest_tag.tag_name.substring(1));
   });
 
-  it('checking getAllVersion', async () => {
-    expect(await utils.getAllVersion(2));
+  it('checking getVersion', async () => {
+    expect(await utils.getVersion(slsVersion)).toBe(slsVersion);
   });
 
   afterEach(() => {
