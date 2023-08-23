@@ -9,9 +9,10 @@
 
 This action provides the following functionality for GitHub Actions users:
 
-- Optionally downloading and caching distribution of the requested standalone binary Serverless version(no node/npm required), and adding it to the PATH
+- Easily install Serverless without Node.js or npm.
+- The action can also cache the distribution of the required standalone Serverless binary and add it to the system PATH.
 
-After you've used the action, subsequent steps in the same job can run arbitrary Serverless commands using [the GitHub Actions run syntax](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsrun). This allows most Serverless commands to work exactly like they do on your local command line.
+Once you've utilized the action, other steps in the same job can run various Serverless commands using [GitHub Actions run syntax]((https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsrun)). This enables most Serverless commands to function similarly to how they do on your local command line.
 
 ## Usage
 
@@ -114,9 +115,10 @@ steps:
 - run: sls deploy
 ```
 
-> **If you need to use Tencent Cloud in China, you need to set the environment variable `SERVERLESS_PLATFORM_VENDOR` to tencent.**
+> **Note**
+> If you need to use Tencent Cloud in China, you need to set the environment variable `SERVERLESS_PLATFORM_VENDOR` to tencent.
 >
-> **You don't need `TENCENT_TOKEN`, because it is not currently supported.**
+> You don't need `TENCENT_TOKEN`, because it is not currently supported.
 
 ```yaml
 steps:
@@ -187,6 +189,7 @@ The action supports the following inputs:
 - Semantic release versions can also be used. It is recommended to [use dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) with semantic versioning to keep the actions in your workflows up to date.
 
 ## Contributing
+
 Contributions, issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/Teakowa/setup-serverless/issues).
 
