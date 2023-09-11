@@ -36,7 +36,7 @@
     "@actions/glob": "^0.4.0",
     "@actions/io": "^1.1.3",
     "@octokit/rest": "^20.0.1",
-    "node-fetch": "^2.6.12",
+    "node-fetch": "^3.3.2",
     "semver": "^7.5.4"
   },
   "devDependencies": {
