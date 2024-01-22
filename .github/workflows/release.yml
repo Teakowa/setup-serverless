@@ -51,5 +51,5 @@ jobs:
       - name: Update Tag
         if: ${{ steps.semantic.outputs.new_release_published == 'true' }}
         run: |
-          git tag -f v2
-          git push origin v2 --force
+          git tag -f v3
+          git push origin v3 --force
