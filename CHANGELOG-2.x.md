@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/Teakowa/setup-serverless/compare/v2.1.1...v3.0.0) (2024-01-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* CHANGE
+
+Now node v20 is required, please update your runtime node version.
+
+Signed-off-by: Teakowa <27560638+Teakowa@users.noreply.github.com>
+
+### :sparkles: Features
+
+* update runtime to node v20 ([1e43f11](https://github.com/Teakowa/setup-serverless/commit/1e43f1156913fd1110412b569a733ea6a9de0596))
+
 ## [2.1.1](https://github.com/Teakowa/setup-serverless/compare/v2.1.0...v2.1.1) (2023-08-12)
 
 
