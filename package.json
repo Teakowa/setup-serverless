@@ -1,6 +1,6 @@
 {
   "name": "setup-serverless",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "private": true,
   "description": "Setup serverless cli for GitHub Actions",
   "main": "lib/setup-serverless.js",

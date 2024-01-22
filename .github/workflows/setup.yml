@@ -52,11 +52,36 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
-        serverless-versions: [ 2.71.0, 3.7.0, latest ]
+        serverless-versions: [ 2.71.0, 3.38.0, latest ]
         providers: [ 'aws','azure','tencent','gcloud','cloudflare-workers','fn','kubeless','openwhisk','aliyun' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm i --ignore-scripts --no-frozen-lockfile
+
+      - name: Cache build
+        uses: actions/cache@v4
+        id: build-cache
+        with:
+          path: dist
+          key: ${{ runner.os }}-build-${{ hashFiles('./dist/index.js') }}
+
+      - name: Build
+        if: steps.build-cache.outputs.cache-hit != 'true'
+        run: pnpm run build
 
       - name: Setup Serverless - ${{ matrix['serverless-versions'] }}
         uses: ./
