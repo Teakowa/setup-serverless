@@ -24,7 +24,7 @@ The default configuration installs the latest version of Serverless CLI
 
 ```yaml
 steps:
-  - uses: Teakowa/setup-serverless@v2
+  - uses: Teakowa/setup-serverless@v3
     with:
       serverless_version: 3.9.0
       provider: aws
@@ -70,7 +70,7 @@ Credentials for AWS can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: aws
   env:
@@ -86,7 +86,7 @@ Credentials for Azure can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: azure
   env:
@@ -104,7 +104,7 @@ Credentials for Tencent Cloud can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: tencent
   env:
@@ -122,7 +122,7 @@ steps:
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: tencent
   env:
@@ -140,7 +140,7 @@ Credentials for Aliyun can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: aliyun
   env:
@@ -157,7 +157,7 @@ Credentials for Cloudflare Workers can be configured.
 
 ```yaml
 steps:
-- uses: Teakowa/setup-serverless@v2
+- uses: Teakowa/setup-serverless@v3
   with:
     provider: cloudflare-workers
   env:
@@ -185,7 +185,7 @@ The action supports the following inputs:
 
 ## Versioning
 
-- Use the `v2` tag as `setup-serverless` version. It is a rolling tag and is synced with the latest minor and patch releases. With `v2` you automatically get the bug fixes, security patches, new features and support for latest `setup-serverless` releases.
+- Use the `v3` tag as `setup-serverless` version. It is a rolling tag and is synced with the latest minor and patch releases. With `v3` you automatically get the bug fixes, security patches, new features and support for latest `setup-serverless` releases.
 - Semantic release versions can also be used. It is recommended to [use dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot) with semantic versioning to keep the actions in your workflows up to date.
 
 ## Contributing
