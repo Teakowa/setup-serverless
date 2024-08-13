@@ -82,8 +82,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       lint-staged:
-        specifier: ^15.2.8
-        version: 15.2.8
+        specifier: ^15.2.9
+        version: 15.2.9
       npm-run-all2:
         specifier: ^6.2.2
         version: 6.2.2
@@ -2182,8 +2182,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.2.8:
-    resolution: {integrity: sha512-PUWFf2zQzsd9EFU+kM1d7UP+AZDbKFKuj+9JNVTBkhUFhbg4MAt6WfyMMwBfM4lYqd4D2Jwac5iuTu9rVj4zCQ==}
+  lint-staged@15.2.9:
+    resolution: {integrity: sha512-BZAt8Lk3sEnxw7tfxM7jeZlPRuT4M68O0/CwZhhaw6eeWu0Lz5eERE3m386InivXB64fp/mDID452h48tvKlRQ==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -3480,7 +3480,7 @@ snapshots:
       '@babel/traverse': 7.23.2
       '@babel/types': 7.23.0
       convert-source-map: 1.9.0
-      debug: 4.3.4
+      debug: 4.3.6
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -3653,7 +3653,7 @@ snapshots:
       '@babel/helper-split-export-declaration': 7.22.6
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
-      debug: 4.3.4
+      debug: 4.3.6
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -3681,7 +3681,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4
+      debug: 4.3.6
       espree: 9.6.1
       globals: 13.19.0
       ignore: 5.2.4
@@ -3697,7 +3697,7 @@ snapshots:
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.2
-      debug: 4.3.4
+      debug: 4.3.6
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -4086,7 +4086,7 @@ snapshots:
       conventional-changelog-angular: 7.0.0
       conventional-commits-filter: 4.0.0
       conventional-commits-parser: 5.0.0
-      debug: 4.3.4
+      debug: 4.3.6
       import-from-esm: 1.3.1
       lodash-es: 4.17.21
       micromatch: 4.0.7
@@ -4120,7 +4120,7 @@ snapshots:
       '@octokit/plugin-throttling': 9.0.3(@octokit/core@6.0.1)
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      debug: 4.3.4
+      debug: 4.3.6
       dir-glob: 3.0.1
       globby: 14.0.1
       http-proxy-agent: 7.0.0
@@ -4157,7 +4157,7 @@ snapshots:
       conventional-changelog-writer: 7.0.1
       conventional-commits-filter: 4.0.0
       conventional-commits-parser: 5.0.0
-      debug: 4.3.4
+      debug: 4.3.6
       get-stream: 7.0.0
       import-from-esm: 1.3.1
       into-stream: 7.0.0
@@ -4292,7 +4292,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.5.4)
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.5.4)
-      debug: 4.3.4
+      debug: 4.3.6
       eslint: 8.57.0
       tsutils: 3.21.0(typescript@5.5.4)
     optionalDependencies:
@@ -4306,7 +4306,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.4
+      debug: 4.3.6
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
@@ -4357,7 +4357,7 @@ snapshots:
 
   agent-base@7.1.0:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -5373,14 +5373,14 @@ snapshots:
   http-proxy-agent@7.0.0:
     dependencies:
       agent-base: 7.1.0
-      debug: 4.3.4
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@7.0.0:
     dependencies:
       agent-base: 7.1.0
-      debug: 4.3.4
+      debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
 
@@ -5401,7 +5401,7 @@ snapshots:
 
   import-from-esm@1.3.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.6
       import-meta-resolve: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -5587,7 +5587,7 @@ snapshots:
 
   istanbul-lib-source-maps@4.0.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.6
       istanbul-lib-coverage: 3.2.0
       source-map: 0.6.1
     transitivePeerDependencies:
@@ -5973,7 +5973,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.2.8:
+  lint-staged@15.2.9:
     dependencies:
       chalk: 5.3.0
       commander: 12.1.0
