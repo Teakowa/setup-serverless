@@ -35,10 +35,10 @@ importers:
     devDependencies:
       '@semantic-release/changelog':
         specifier: ^6.0.3
-        version: 6.0.3(semantic-release@23.1.1(typescript@5.6.2))
+        version: 6.0.3(semantic-release@23.1.1(typescript@5.6.3))
       '@semantic-release/git':
         specifier: ^10.0.1
-        version: 10.0.1(semantic-release@23.1.1(typescript@5.6.2))
+        version: 10.0.1(semantic-release@23.1.1(typescript@5.6.3))
       '@types/jest':
         specifier: ^29.5.13
         version: 29.5.13
@@ -50,10 +50,10 @@ importers:
         version: 2.6.4
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.62.0
-        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2)
+        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
       '@typescript-eslint/parser':
         specifier: ^5.62.0
-        version: 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+        version: 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       '@vercel/ncc':
         specifier: ^0.38.2
         version: 0.38.2
@@ -65,10 +65,10 @@ importers:
         version: 9.1.0(eslint@8.57.1)
       eslint-plugin-import:
         specifier: ^2.31.0
-        version: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)
+        version: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)
       eslint-plugin-jest:
         specifier: ^27.9.0
-        version: 27.9.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.2)
+        version: 27.9.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.3)
       eslint-plugin-prettier:
         specifier: ^5.2.1
         version: 5.2.1(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
@@ -95,13 +95,13 @@ importers:
         version: 5.0.8
       semantic-release:
         specifier: ^23.1.1
-        version: 23.1.1(typescript@5.6.2)
+        version: 23.1.1(typescript@5.6.3)
       ts-jest:
         specifier: ^29.2.5
-        version: 29.2.5(@babel/core@7.20.12)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.2)
+        version: 29.2.5(@babel/core@7.20.12)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.3)
       typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+        specifier: ^5.6.3
+        version: 5.6.3
 
 packages:
 
@@ -3219,8 +3219,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typescript@5.6.2:
-    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+  typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4127,15 +4127,15 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/changelog@6.0.3(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/changelog@6.0.3(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       fs-extra: 11.1.0
       lodash: 4.17.21
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
 
-  '@semantic-release/commit-analyzer@12.0.0(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/commit-analyzer@12.0.0(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       conventional-changelog-angular: 7.0.0
       conventional-commits-filter: 4.0.0
@@ -4144,7 +4144,7 @@ snapshots:
       import-from-esm: 1.3.1
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -4152,7 +4152,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/git@10.0.1(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/git@10.0.1(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -4162,11 +4162,11 @@ snapshots:
       lodash: 4.17.21
       micromatch: 4.0.8
       p-reduce: 2.1.0
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@10.0.2(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/github@10.0.2(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       '@octokit/core': 6.0.1
       '@octokit/plugin-paginate-rest': 10.0.0(@octokit/core@6.0.1)
@@ -4183,12 +4183,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.1
       p-filter: 4.1.0
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@12.0.0(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/npm@12.0.0(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -4201,11 +4201,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 9.0.0
       registry-auth-token: 5.0.1
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
       semver: 7.6.3
       tempy: 3.0.0
 
-  '@semantic-release/release-notes-generator@13.0.0(semantic-release@23.1.1(typescript@5.6.2))':
+  '@semantic-release/release-notes-generator@13.0.0(semantic-release@23.1.1(typescript@5.6.3))':
     dependencies:
       conventional-changelog-angular: 7.0.0
       conventional-changelog-writer: 7.0.1
@@ -4217,7 +4217,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 11.0.0
-      semantic-release: 23.1.1(typescript@5.6.2)
+      semantic-release: 23.1.1(typescript@5.6.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -4306,34 +4306,34 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.0
 
-  '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2)':
+  '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.5.1
-      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/type-utils': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
-      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/type-utils': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
+      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       debug: 4.3.4
       eslint: 8.57.1
       graphemer: 1.4.0
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
       semver: 7.6.3
-      tsutils: 3.21.0(typescript@5.6.2)
+      tsutils: 3.21.0(typescript@5.6.3)
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2)':
+  '@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.3)
       debug: 4.3.4
       eslint: 8.57.1
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
 
@@ -4342,21 +4342,21 @@ snapshots:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
 
-  '@typescript-eslint/type-utils@5.62.0(eslint@8.57.1)(typescript@5.6.2)':
+  '@typescript-eslint/type-utils@5.62.0(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
-      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.3)
+      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       debug: 4.3.6
       eslint: 8.57.1
-      tsutils: 3.21.0(typescript@5.6.2)
+      tsutils: 3.21.0(typescript@5.6.3)
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
 
   '@typescript-eslint/types@5.62.0': {}
 
-  '@typescript-eslint/typescript-estree@5.62.0(typescript@5.6.2)':
+  '@typescript-eslint/typescript-estree@5.62.0(typescript@5.6.3)':
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
@@ -4364,20 +4364,20 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
-      tsutils: 3.21.0(typescript@5.6.2)
+      tsutils: 3.21.0(typescript@5.6.3)
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@5.62.0(eslint@8.57.1)(typescript@5.6.2)':
+  '@typescript-eslint/utils@5.62.0(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.1)
       '@types/json-schema': 7.0.11
       '@types/semver': 7.3.13
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.2)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.3)
       eslint: 8.57.1
       eslint-scope: 5.1.1
       semver: 7.6.3
@@ -4768,14 +4768,14 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig@9.0.0(typescript@5.6.2):
+  cosmiconfig@9.0.0(typescript@5.6.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.6.2
+      typescript: 5.6.3
 
   create-jest@29.7.0(@types/node@20.14.12):
     dependencies:
@@ -5008,17 +5008,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
-      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -5029,7 +5029,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -5041,18 +5041,18 @@ snapshots:
       string.prototype.trimend: 1.0.8
       tsconfig-paths: 3.15.0
     optionalDependencies:
-      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jest@27.9.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.2):
+  eslint-plugin-jest@27.9.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.3):
     dependencies:
-      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/utils': 5.62.0(eslint@8.57.1)(typescript@5.6.3)
       eslint: 8.57.1
     optionalDependencies:
-      '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2)
+      '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
       jest: 29.7.0(@types/node@20.14.12)
     transitivePeerDependencies:
       - supports-color
@@ -6605,15 +6605,15 @@ snapshots:
 
   sax@1.2.4: {}
 
-  semantic-release@23.1.1(typescript@5.6.2):
+  semantic-release@23.1.1(typescript@5.6.3):
     dependencies:
-      '@semantic-release/commit-analyzer': 12.0.0(semantic-release@23.1.1(typescript@5.6.2))
+      '@semantic-release/commit-analyzer': 12.0.0(semantic-release@23.1.1(typescript@5.6.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 10.0.2(semantic-release@23.1.1(typescript@5.6.2))
-      '@semantic-release/npm': 12.0.0(semantic-release@23.1.1(typescript@5.6.2))
-      '@semantic-release/release-notes-generator': 13.0.0(semantic-release@23.1.1(typescript@5.6.2))
+      '@semantic-release/github': 10.0.2(semantic-release@23.1.1(typescript@5.6.3))
+      '@semantic-release/npm': 12.0.0(semantic-release@23.1.1(typescript@5.6.3))
+      '@semantic-release/release-notes-generator': 13.0.0(semantic-release@23.1.1(typescript@5.6.3))
       aggregate-error: 5.0.0
-      cosmiconfig: 9.0.0(typescript@5.6.2)
+      cosmiconfig: 9.0.0(typescript@5.6.3)
       debug: 4.3.4
       env-ci: 11.0.0
       execa: 9.0.2
@@ -6905,7 +6905,7 @@ snapshots:
 
   traverse@0.6.7: {}
 
-  ts-jest@29.2.5(@babel/core@7.20.12)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.2):
+  ts-jest@29.2.5(@babel/core@7.20.12)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(jest@29.7.0(@types/node@20.14.12))(typescript@5.6.3):
     dependencies:
       bs-logger: 0.2.6
       ejs: 3.1.10
@@ -6916,7 +6916,7 @@ snapshots:
       lodash.memoize: 4.1.2
       make-error: 1.3.6
       semver: 7.6.3
-      typescript: 5.6.2
+      typescript: 5.6.3
       yargs-parser: 21.1.1
     optionalDependencies:
       '@babel/core': 7.20.12
@@ -6935,10 +6935,10 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsutils@3.21.0(typescript@5.6.2):
+  tsutils@3.21.0(typescript@5.6.3):
     dependencies:
       tslib: 1.14.1
-      typescript: 5.6.2
+      typescript: 5.6.3
 
   tunnel@0.0.6: {}
 
@@ -6992,7 +6992,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typescript@5.6.2: {}
+  typescript@5.6.3: {}
 
   uglify-js@3.17.4:
     optional: true
